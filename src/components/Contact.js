@@ -1,9 +1,8 @@
 import { React, useState } from 'react';
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
-import './ContactUs.css';
 
-export default function ContactUs () {
+function ContactMe () {
     
     const [verified, setVerified] = useState(false);
     const [vistorName, setVistorName] = useState('');
@@ -71,3 +70,5 @@ export default function ContactUs () {
             </section>
     )
 }
+
+export default ContactMe;
