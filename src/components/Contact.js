@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -28,7 +28,7 @@ function ContactMe () {
     };
 
         return (
-            <section id="Contact_Us" class="d-flex flex-column container bg-dark text-light p-3">
+            <section id="Contact" class="d-flex flex-column container bg-dark text-light p-3">
                 <div>
                     <div class='container '>
                         <h1 class=''>Contact Me</h1>

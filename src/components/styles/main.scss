@@ -1,0 +1,102 @@
+@import './custom.scss';
+
+@mixin baseline() {
+    height: 100vh;
+    color: #fff;
+}
+
+@mixin logo() {
+    font-family: 'Goblin One', cursive;
+    font-size: xx-large;
+    color: red;
+}
+
+nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    background-color: $green-600;
+
+    img {
+        height: 35px;
+    };
+
+    h2 {
+        @include logo;
+    }
+
+    button {
+
+    }
+
+    ul {
+        .nav-link {
+            padding-right: 1em;
+            font-family: 'Goblin One', cursive;
+            font-size: small;
+            color: red;
+            &:focus, &:hover{
+                color: white;
+                // background-color: #fff;
+            }
+        }
+        .vr {
+            width: 1px;            
+        }
+    }
+
+}
+
+
+
+#Main {
+    // font-family: 'Bebas Neue', cursive;
+    // font-family: 'Cinzel', serif;
+    // font-family: 'Goblin One', cursive;
+    // font-family: 'Permanent Marker', cursive;
+    // font-family: 'Playfair Display', serif;
+    // font-family: 'Raleway', sans-serif;
+    // font-family: 'Spectral SC', serif;
+    h1 {
+        // @include baseline;
+    }
+    img {
+        // max-height: 100px;
+    }
+}
+
+#About {
+    @include baseline;
+    img {
+
+        }
+}
+
+#Projects {
+    @include baseline;
+
+}
+
+#Contact {
+    @include baseline;
+}
+
+#Footer {
+    @include baseline;
+    background-color: black;
+    img {
+        height: 35px;
+    }
+
+    h2 {
+        @include logo;
+    }
+}
+
+#Construction {
+    @include baseline;
+}
+
+#Footer {
+    height: 50vh;
+}

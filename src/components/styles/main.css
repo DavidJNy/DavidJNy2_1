@@ -1,0 +1,64 @@
+@import "//node_modules/bootstrap/scss/bootstrap.scss";
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background-color: shade-color(#198754, 20%);
+}
+nav img {
+  height: 35px;
+}
+nav h2 {
+  font-family: "Goblin One", cursive;
+  font-size: xx-large;
+  color: red;
+}
+nav ul .nav-link {
+  padding-right: 1em;
+  font-family: "Goblin One", cursive;
+  font-size: small;
+  color: red;
+}
+nav ul .nav-link:focus, nav ul .nav-link:hover {
+  color: white;
+}
+nav ul .vr {
+  width: 1px;
+}
+
+#About {
+  height: 100vh;
+  color: #fff;
+}
+#Projects {
+  height: 100vh;
+  color: #fff;
+}
+
+#Contact {
+  height: 100vh;
+  color: #fff;
+}
+
+#Footer {
+  height: 100vh;
+  color: #fff;
+  background-color: black;
+}
+#Footer img {
+  height: 35px;
+}
+#Footer h2 {
+  font-family: "Goblin One", cursive;
+  font-size: xx-large;
+  color: red;
+}
+
+#Construction {
+  height: 100vh;
+  color: #fff;
+}
+
+#Footer {
+  height: 50vh;
+}/*# sourceMappingURL=main.css.map */
