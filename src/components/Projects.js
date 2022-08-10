@@ -7,8 +7,8 @@ function Projects() {
     return (
         <div id="Projects" class="container">
             <div class="">
-                <div class=''>
-                    <h1>
+                <div class='container'>
+                    <h1 class='display-1 p-3'>
                         Apps and projects
                     </h1>
                     <p>

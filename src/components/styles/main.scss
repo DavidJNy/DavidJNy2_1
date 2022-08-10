@@ -1,5 +1,16 @@
 @import './custom.scss';
 
+//IDK WHY I can't import bootstrap variables of the different
+//shades of colors.
+
+// font-family: 'Bebas Neue', cursive;
+// font-family: 'Cinzel', serif;
+// font-family: 'Goblin One', cursive;
+// font-family: 'Permanent Marker', cursive;
+// font-family: 'Playfair Display', serif;
+// font-family: 'Raleway', sans-serif;
+
+
 @mixin baseline() {
     height: 100vh;
     color: #fff;
@@ -11,11 +22,22 @@
     color: red;
 }
 
+@mixin backLight() {
+    box-shadow: 0px 0px 54px -4px rgba(255,255,255,0.7);
+}
+
+//css styling
+
+#App {
+    background-color: rgb(20, 20, 20);
+}
+
 nav {
     position: -webkit-sticky;
     position: sticky;
+    z-index: 1;
     top: 0px;
-    background-color: $green-600;
+    background-color: black;
 
     img {
         height: 35px;
@@ -47,26 +69,60 @@ nav {
 
 }
 
-
+@keyframes movedown {
+    0% {
+        transform: translateY(-100px);
+        visibility: visible;
+    }
+    100% {
+        transform: translate(0);
+        visibility: visible;
+    }
+}
 
 #Main {
-    // font-family: 'Bebas Neue', cursive;
-    // font-family: 'Cinzel', serif;
-    // font-family: 'Goblin One', cursive;
-    // font-family: 'Permanent Marker', cursive;
-    // font-family: 'Playfair Display', serif;
-    // font-family: 'Raleway', sans-serif;
-    // font-family: 'Spectral SC', serif;
-    h1 {
-        // @include baseline;
+    block-size: fit-content;
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    
+    .d-flex {
+
     }
-    img {
-        // max-height: 100px;
+    img:nth-child(1) {
+        // @include backLight();
+        max-height: 50vh;
+        
+    }
+    h1:nth-child(1) {
+        // text-transform: lowercase;
+        height: min 50 vh;
+        text-shadow: #fff;
+        letter-spacing: 0.2em;
+    }
+    h2 {
+        // z-index: 1;
+        // background: linear-gradient(45deg, #3a3a3a, #6e0000);
+    }
+    h3 {
+        // font-family: 'Permanent Marker', cursive;
+        // letter-spacing: 0.5em;
+    }
+    h4 {  
+    }
+    p {
+        // letter-spacing: 0.2em;
     }
 }
 
 #About {
     @include baseline;
+    div p:nth-child(1){
+        font-family: 'Permanent Marker', cursive;
+        letter-spacing: 0.5em;
+    }
+
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 0.1em;
     img {
 
         }
@@ -74,16 +130,34 @@ nav {
 
 #Projects {
     @include baseline;
-
+    font-family: 'Raleway', sans-serif;
+    div p {
+        
+    }
 }
 
 #Contact {
     @include baseline;
+
+    a {
+        color: white;
+        transition: 0.5s;
+        transition-property: transform;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 0.2em;
+        &:hover{
+            color: red;
+            transform: scale(1.5);
+        }
+    }
 }
 
 #Footer {
+    
     @include baseline;
     background-color: black;
+    height: 50vh;
+
     img {
         height: 35px;
     }
@@ -91,12 +165,56 @@ nav {
     h2 {
         @include logo;
     }
+
+    div > a {
+        color: white;
+        transition: 0.5s;
+        transition-property: transform;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 0.2em;
+        &:hover{
+            color: red;
+            transform: scale(1.5);
+        }
+    }
+
 }
 
 #Construction {
     @include baseline;
 }
 
-#Footer {
-    height: 50vh;
-}
+//responsive styling
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {  }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {  }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  }
+
+// @include media-breakpoint-up(xs) {  }
+// @include media-breakpoint-up(sm) {  }
+// @include media-breakpoint-up(md) {  }
+// @include media-breakpoint-up(lg) {  }
+// @include media-breakpoint-up(xl) {  }
+
+// // Example usage:
+// @include media-breakpoint-up(sm) {
+// //   .some-class {
+// //     display: block;
+// //   }
+// }
+
+$zindex-dropdown:          1000 !default;
+$zindex-sticky:            1020 !default;
+$zindex-fixed:             1030 !default;
+$zindex-modal-backdrop:    1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;

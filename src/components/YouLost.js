@@ -1,5 +1,5 @@
 import React from "react";
-import traffic from './images/thailand/traffic.jpg'
+import thaiboats from './images/thailand/thaiboats.jpg'
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
 
     <div class='container text-white'>
       you looks lost yo
-      <img src={traffic} alt='' class='img-fluid'></img>
+      <img src={thaiboats} alt='' class='img-fluid'></img>
     </div>
 
   );

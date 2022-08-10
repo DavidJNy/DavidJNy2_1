@@ -9,18 +9,17 @@ function NavigationBar() {
 
     return (
         <>
-        <nav class="navbar navbar-expand-sm border-bottom border-danger
-            border-2 rounded-bottom my-n2 position-sticky">
+        <nav class="navbar navbar-expand-sm my-n2 position-sticky">
             <div class="container">
                 <Link class="nav-link d-flex" to="/" >
                     <img alt="logo" src={ChiliLogo2} id="clogo" class="mx-2" />
-                    <h2 class="mt-2 " >Prick Tox</h2>
+                    <h2 class="mt-2">Prick Tox</h2>
                 </Link>
-                    <button class="navbar-toggler bg-secondary m-3" type="button" 
+                    <button class="navbar-toggler m-3" type="button" 
                 data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                 aria-controls="navbarNav" aria-expanded="false" 
                 aria-label="Toggle navigation">
-                        <CgFormatJustify/>
+                        <CgFormatJustify size='2em' color='red'/>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">

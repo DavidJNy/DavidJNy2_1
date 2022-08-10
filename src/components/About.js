@@ -6,7 +6,7 @@ function About() {
 
     return (
         <div id="About">
-            <div class="p-3 mb-2 bg-dark">
+            <div class="p-3 mb-2">
                 <div class=" p-2">
                     <div class="p-2 text-light">
                         <p class="display-5">My name is David Ny and I'm a web developer.</p>

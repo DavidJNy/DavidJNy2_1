@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
+import { useEffect } from 'react';
 
 function ContactMe () {
     
@@ -13,6 +15,27 @@ function ContactMe () {
     function onChange() {
         setVerified(!verified);
     }
+
+    // https://www.npmjs.com/package/react-google-recaptcha
+
+    //this might work? idk. come back to this.
+    // componentDidMount(){
+    //     setTimeout(() => {
+    //         window.grecaptcha.render('recaptcha-contact', {
+    //             sitekey: "key",
+    //             callback: function (resp) { }
+    //         });
+    //     }, 300);
+    // }
+
+    
+    // <script type="text/javascript">
+    //   var onloadCallback = function() {
+    //     grecaptcha.render('html_element', {
+    //       'sitekey' : 'your_site_key'
+    //     });
+    //   };
+    // </script>
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -28,24 +51,23 @@ function ContactMe () {
     };
 
         return (
-            <section id="Contact" class="d-flex flex-column container bg-dark text-light p-3">
+            <section id="Contact" class="d-flex flex-column container p-3">
                 <div>
-                    <div class='container '>
-                        <h1 class=''>Contact Me</h1>
-                        <p class='summary'>A little more about myself. Started learning <i class="fa-brands fa-2xl fa-html5"></i>  HTML and <i class="fa-brands fa-2xl fa-css3"></i> CSS along with <i class="fa-brands fa-2xl fa-js-square"></i> Javascript in 2017 using freecodecamp, Codecademy &amp; W3. 
-                            Then got real serious 2020 when the pandemic hit. Picked up <i class="fa-brands fa-2xl fa-react"></i> React and <i class="fa-brands fa-2xl fa-node"></i> NodeJS &amp; along with Express for Backend application.
-                            With a wide variety of helpful resources that other developers share from StackOverflow, Youtube, Medium, and discord; I actually
-                            feel confident enough to build this website. <br /><br />Thanks! Much Love  <i class="fa-solid fa-2xl fa-heart"></i>
-                        </p>
-                        <p>Click here for my Github and Linkedin: &emsp;<a href="https://github.com/DavidJNy"><i class="fa-brands fa-2xl fa-github"></i></a> &emsp; 
-                            <a href="https://www.linkedin.com/in/DavidJNy"><i class="fa-brands fa-2xl fa-linkedin" ></i></a>
-                        </p>
-                    </div>
+                    <h1 class=''>Contact Me</h1>
+                    <p class='summary'>A little more about myself. Started learning <i class="fa-brands fa-2xl fa-html5"></i>  HTML and <i class="fa-brands fa-2xl fa-css3"></i> CSS along with <i class="fa-brands fa-2xl fa-js-square"></i> Javascript in 2017 using freecodecamp, Codecademy &amp; W3. 
+                        Then got real serious 2020 when the pandemic hit. Picked up <i class="fa-brands fa-2xl fa-react"></i> React and <i class="fa-brands fa-2xl fa-node"></i> NodeJS &amp; along with Express for Backend application.
+                        With a wide variety of helpful resources that other developers share from StackOverflow, Youtube, Medium, and discord; I actually
+                        feel confident enough to build this website. <br /><br />Thanks! Much Love  <i class="fa-solid fa-2xl fa-heart"></i>
+                    </p>
+                    <p>Click here for my Github and Linkedin: &emsp;<a href="https://github.com/DavidJNy"><BsGithub size='2em' color='white' /></a> &emsp; 
+                        <a href="https://www.linkedin.com/in/DavidJNy"><BsLinkedin size='2em' color='white'/></a>
+                    </p>
                     <hr class="solid"></hr>
                 </div>
                 <h2> Go ahead and shoot me an email by filling out the form</h2>
                 <p> I'm looking all types of work so feel free to contact me &nbsp;
-                <i class="fa-solid fa-at"></i> David.Johnson.Ny@gmail.com</p>
+                {/* David.Johnson.Ny@gmail.com */}
+                </p>
                 <form name="container" class="row" method="PUT" id="myForm" onSubmit={sendEmail}>
                     <div class='col'>
                         <label class="m-2" htmlFor="name"> Name </label>
@@ -64,6 +86,7 @@ function ContactMe () {
                         sitekey={publicReChapKey}
                         onChange={onChange}
                     />
+                    {/* reCAPTCHA doesn't load when switching tabs and content. Force it to load */}
                         <button type="submit" class="btn btn-primary m-3" disabled={!verified}> Submit </button>
                     </form>
                 

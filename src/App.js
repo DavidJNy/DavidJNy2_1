@@ -12,8 +12,8 @@ function App() {
 
   return (
 
-    <div className="App" class='bg-dark text-light'>
-      <NavigationBar class=''/>
+    <div id="App" class='text-light'>
+      <NavigationBar/>
       <Routes>
         <Route path="/" element={<Main/>}/>
         <Route path="/About" element={<About/>}/>
