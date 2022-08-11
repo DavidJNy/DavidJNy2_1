@@ -14,6 +14,8 @@
 @mixin baseline() {
     height: 100vh;
     color: #fff;
+    block-size: fit-content;
+    font-family: 'Bebas Neue', cursive;
 }
 
 @mixin logo() {
@@ -26,10 +28,21 @@
     box-shadow: 0px 0px 54px -4px rgba(255,255,255,0.7);
 }
 
+@keyframes movedown {
+    0% {
+        transform: translateY(-100px);
+        visibility: visible;
+    }
+    100% {
+        transform: translate(0);
+        visibility: visible;
+    }
+}
 //css styling
 
 #App {
     background-color: rgb(20, 20, 20);
+    font-family: 'Raleway', sans-serif;
 }
 
 nav {
@@ -69,60 +82,43 @@ nav {
 
 }
 
-@keyframes movedown {
-    0% {
-        transform: translateY(-100px);
-        visibility: visible;
-    }
-    100% {
-        transform: translate(0);
-        visibility: visible;
-    }
-}
 
 #Main {
-    block-size: fit-content;
-    color: white;
-    font-family: 'Bebas Neue', cursive;
+    @include baseline;
     
-    .d-flex {
-
-    }
     img:nth-child(1) {
         // @include backLight();
         max-height: 50vh;
         
     }
     h1:nth-child(1) {
-        // text-transform: lowercase;
-        height: min 50 vh;
-        text-shadow: #fff;
-        letter-spacing: 0.2em;
+        font-family: 'Raleway', sans-serif;
     }
     h2 {
-        // z-index: 1;
+        font-family: 'Cinzel', serif;
+        font-family: 'Playfair Display', serif;
         // background: linear-gradient(45deg, #3a3a3a, #6e0000);
     }
     h3 {
-        // font-family: 'Permanent Marker', cursive;
-        // letter-spacing: 0.5em;
     }
     h4 {  
     }
     p {
-        // letter-spacing: 0.2em;
+        font-family: 'Playfair Display', serif;
     }
 }
 
 #About {
     @include baseline;
+    height: 100vh;
+    overflow: auto;
+    overflow: scroll;
     div p:nth-child(1){
-        font-family: 'Permanent Marker', cursive;
-        letter-spacing: 0.5em;
+        letter-spacing: 0.1em;
     }
-
-    font-family: 'Raleway', sans-serif;
-    letter-spacing: 0.1em;
+    div p {
+        font-family: 'Raleway', sans-serif;
+    }
     img {
 
         }
@@ -130,20 +126,20 @@ nav {
 
 #Projects {
     @include baseline;
-    font-family: 'Raleway', sans-serif;
+    height: 100vh;
     div p {
-        
+        font-family: 'Playfair Display', serif;
     }
 }
 
 #Contact {
     @include baseline;
-
+    height: 100vh;
+    font-family: 'Playfair Display', serif;
     a {
         color: white;
         transition: 0.5s;
         transition-property: transform;
-        font-family: 'Raleway', sans-serif;
         letter-spacing: 0.2em;
         &:hover{
             color: red;
@@ -156,7 +152,7 @@ nav {
     
     @include baseline;
     background-color: black;
-    height: 50vh;
+    height: 30vh;
 
     img {
         height: 35px;

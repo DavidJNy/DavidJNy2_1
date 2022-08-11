@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, React } from 'react';
 import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -12,30 +12,21 @@ function ContactMe () {
     const [vistorMessage, setVistorMessage] = useState('');
     const publicReChapKey = "6Ldb6tIgAAAAAHjqzENAoVtM-7DPaXvBHjJD4f1Z"
     
-    function onChange() {
-        setVerified(!verified);
+    
+    function onChange(value) {
+        if (value == null) {
+            setVerified(false)
+        }
+        else setVerified(!verified);
+        console.log("Captcha value:", value);
+        console.log('you passed')
     }
 
-    // https://www.npmjs.com/package/react-google-recaptcha
-
-    //this might work? idk. come back to this.
-    // componentDidMount(){
-    //     setTimeout(() => {
-    //         window.grecaptcha.render('recaptcha-contact', {
-    //             sitekey: "key",
-    //             callback: function (resp) { }
-    //         });
-    //     }, 300);
-    // }
-
-    
-    // <script type="text/javascript">
-    //   var onloadCallback = function() {
-    //     grecaptcha.render('html_element', {
-    //       'sitekey' : 'your_site_key'
-    //     });
-    //   };
-    // </script>
+    //we can play around with the buttons and stuff here.
+    useEffect(() => {
+        // Update the document title using the browser API
+        console.log("page reloaded " + new Date())
+    });
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -44,7 +35,9 @@ function ContactMe () {
                 console.log('SUCCESS!', response.status, response.text);
             }, function (error) {
                 console.log('FAILED...', error);
+                //We can custimize this a bit. follow the error comings through.
             });
+        
         setVistorName('');
         setVistorEmail('');
         setVistorMessage('');
@@ -54,6 +47,7 @@ function ContactMe () {
             <section id="Contact" class="d-flex flex-column container p-3">
                 <div>
                     <h1 class=''>Contact Me</h1>
+                    <hr class='solid'></hr>
                     <p class='summary'>A little more about myself. Started learning <i class="fa-brands fa-2xl fa-html5"></i>  HTML and <i class="fa-brands fa-2xl fa-css3"></i> CSS along with <i class="fa-brands fa-2xl fa-js-square"></i> Javascript in 2017 using freecodecamp, Codecademy &amp; W3. 
                         Then got real serious 2020 when the pandemic hit. Picked up <i class="fa-brands fa-2xl fa-react"></i> React and <i class="fa-brands fa-2xl fa-node"></i> NodeJS &amp; along with Express for Backend application.
                         With a wide variety of helpful resources that other developers share from StackOverflow, Youtube, Medium, and discord; I actually
@@ -66,7 +60,6 @@ function ContactMe () {
                 </div>
                 <h2> Go ahead and shoot me an email by filling out the form</h2>
                 <p> I'm looking all types of work so feel free to contact me &nbsp;
-                {/* David.Johnson.Ny@gmail.com */}
                 </p>
                 <form name="container" class="row" method="PUT" id="myForm" onSubmit={sendEmail}>
                     <div class='col'>
@@ -77,18 +70,21 @@ function ContactMe () {
                         <label htmlFor="email" class="form-label m-2"> Email </label>
                         <input type="email" id="email" name="from_email" class="form-control" placeholder="Email" onChange={event => setVistorEmail(event.target.value)} value={vistorEmail}/>
                     </div>
-                    <div class=''>
+                    <div class='col-12'>
                         <label class="m-2" htmlFor="message">Message</label>
-                        <textarea type="message" id="message" name="message" rows="2" class="form-control" placeholder="Tell me what you need help with. :)" onChange={event => setVistorMessage(event.target.value)} value={vistorMessage}/>
+                        <textarea type="message" id="message" name="message" rows="5" class="form-control" placeholder="Tell me what you need help with. :)" onChange={event => setVistorMessage(event.target.value)} value={vistorMessage}/>
                     </div>
+                    <div class='d-flex pt-3'>
+
                     <ReCAPTCHA
-                        class="g-recaptcha p-4"
+                        class="g-recaptcha p-3"
                         sitekey={publicReChapKey}
                         onChange={onChange}
-                    />
-                    {/* reCAPTCHA doesn't load when switching tabs and content. Force it to load */}
-                        <button type="submit" class="btn btn-primary m-3" disabled={!verified}> Submit </button>
-                    </form>
+                        theme={'dark'}
+                        />
+                    <button type="submit" class="btn-lg btn-primary m-3 flex-fill" disabled={false}> Submit </button>
+                    </div>
+                </form>
                 
             </section>
     )

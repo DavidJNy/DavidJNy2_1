@@ -1,6 +1,27 @@
 @import '//node_modules/bootstrap/scss/bootstrap.scss';
+@-webkit-keyframes movedown {
+  0% {
+    transform: translateY(-100px);
+    visibility: visible;
+  }
+  100% {
+    transform: translate(0);
+    visibility: visible;
+  }
+}
+@keyframes movedown {
+  0% {
+    transform: translateY(-100px);
+    visibility: visible;
+  }
+  100% {
+    transform: translate(0);
+    visibility: visible;
+  }
+}
 #App {
   background-color: rgb(20, 20, 20);
+  font-family: "Raleway", sans-serif;
 }
 
 nav {
@@ -31,66 +52,72 @@ nav ul .vr {
   width: 1px;
 }
 
-@-webkit-keyframes movedown {
-  0% {
-    transform: translateY(-100px);
-    visibility: visible;
-  }
-  100% {
-    transform: translate(0);
-    visibility: visible;
-  }
-}
-
-@keyframes movedown {
-  0% {
-    transform: translateY(-100px);
-    visibility: visible;
-  }
-  100% {
-    transform: translate(0);
-    visibility: visible;
-  }
-}
 #Main {
+  height: 100vh;
+  color: #fff;
   block-size: -webkit-fit-content;
   block-size: -moz-fit-content;
   block-size: fit-content;
-  color: white;
   font-family: "Bebas Neue", cursive;
 }
 #Main img:nth-child(1) {
   max-height: 50vh;
 }
 #Main h1:nth-child(1) {
-  height: min 50 vh;
-  text-shadow: #fff;
-  letter-spacing: 0.2em;
+  font-family: "Raleway", sans-serif;
 }
+#Main h2 {
+  font-family: "Cinzel", serif;
+  font-family: "Playfair Display", serif;
+}
+#Main p {
+  font-family: "Playfair Display", serif;
+}
+
 #About {
   height: 100vh;
   color: #fff;
-  font-family: "Raleway", sans-serif;
-  letter-spacing: 0.1em;
+  block-size: -webkit-fit-content;
+  block-size: -moz-fit-content;
+  block-size: fit-content;
+  font-family: "Bebas Neue", cursive;
+  height: 100vh;
+  overflow: auto;
+  overflow: scroll;
 }
 #About div p:nth-child(1) {
-  font-family: "Permanent Marker", cursive;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.1em;
+}
+#About div p {
+  font-family: "Raleway", sans-serif;
 }
 #Projects {
   height: 100vh;
   color: #fff;
-  font-family: "Raleway", sans-serif;
+  block-size: -webkit-fit-content;
+  block-size: -moz-fit-content;
+  block-size: fit-content;
+  font-family: "Bebas Neue", cursive;
+  height: 100vh;
 }
+#Projects div p {
+  font-family: "Playfair Display", serif;
+}
+
 #Contact {
   height: 100vh;
   color: #fff;
+  block-size: -webkit-fit-content;
+  block-size: -moz-fit-content;
+  block-size: fit-content;
+  font-family: "Bebas Neue", cursive;
+  height: 100vh;
+  font-family: "Playfair Display", serif;
 }
 #Contact a {
   color: white;
   transition: 0.5s;
   transition-property: transform;
-  font-family: "Raleway", sans-serif;
   letter-spacing: 0.2em;
 }
 #Contact a:hover {
@@ -101,8 +128,12 @@ nav ul .vr {
 #Footer {
   height: 100vh;
   color: #fff;
+  block-size: -webkit-fit-content;
+  block-size: -moz-fit-content;
+  block-size: fit-content;
+  font-family: "Bebas Neue", cursive;
   background-color: black;
-  height: 50vh;
+  height: 30vh;
 }
 #Footer img {
   height: 35px;
@@ -127,4 +158,8 @@ nav ul .vr {
 #Construction {
   height: 100vh;
   color: #fff;
+  block-size: -webkit-fit-content;
+  block-size: -moz-fit-content;
+  block-size: fit-content;
+  font-family: "Bebas Neue", cursive;
 }/*# sourceMappingURL=main.css.map */

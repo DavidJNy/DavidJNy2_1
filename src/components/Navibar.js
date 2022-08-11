@@ -15,13 +15,13 @@ function NavigationBar() {
                     <img alt="logo" src={ChiliLogo2} id="clogo" class="mx-2" />
                     <h2 class="mt-2">Prick Tox</h2>
                 </Link>
-                    <button class="navbar-toggler m-3" type="button" 
+                    <button class="navbar-toggler m-3 float-right" type="button" 
                 data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                 aria-controls="navbarNav" aria-expanded="false" 
                 aria-label="Toggle navigation">
-                        <CgFormatJustify size='2em' color='red'/>
+                        <CgFormatJustify size='1.5em' color='red'/>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <Link class="nav-link d-flex justify-content-center" to="/About">About</Link>
                         <Link class="nav-link d-flex justify-content-center" to="/Projects"><FaReact class='mx-1' size='1.5em' /> Projects</Link>
