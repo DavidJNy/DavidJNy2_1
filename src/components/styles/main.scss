@@ -12,7 +12,6 @@
 
 
 @mixin baseline() {
-    height: 100vh;
     color: #fff;
     block-size: fit-content;
     font-family: 'Bebas Neue', cursive;
@@ -43,6 +42,7 @@
 #App {
     background-color: rgb(20, 20, 20);
     font-family: 'Raleway', sans-serif;
+
 }
 
 nav {
@@ -85,39 +85,23 @@ nav {
 
 #Main {
     @include baseline;
-    
-    img:nth-child(1) {
+    contain: content;
+    img {
         // @include backLight();
-        max-height: 50vh;
-        
+         
     }
-    h1:nth-child(1) {
-        font-family: 'Raleway', sans-serif;
-    }
-    h2 {
+    
+    h1, h2, h3, h4, h5 {
         font-family: 'Cinzel', serif;
-        font-family: 'Playfair Display', serif;
-        // background: linear-gradient(45deg, #3a3a3a, #6e0000);
-    }
-    h3 {
-    }
-    h4 {  
-    }
-    p {
-        font-family: 'Playfair Display', serif;
     }
 }
 
 #About {
     @include baseline;
-    height: 100vh;
-    overflow: auto;
-    overflow: scroll;
-    div p:nth-child(1){
+    
+    p {
+        font-family: 'Cinzel', serif;
         letter-spacing: 0.1em;
-    }
-    div p {
-        font-family: 'Raleway', sans-serif;
     }
     img {
 
@@ -134,7 +118,7 @@ nav {
 
 #Contact {
     @include baseline;
-    height: 100vh;
+    
     font-family: 'Playfair Display', serif;
     a {
         color: white;
@@ -149,10 +133,8 @@ nav {
 }
 
 #Footer {
-    
     @include baseline;
     background-color: black;
-    height: 30vh;
 
     img {
         height: 35px;
@@ -173,6 +155,10 @@ nav {
             transform: scale(1.5);
         }
     }
+    .disableLink {
+        pointer-events: none;
+    }
+
 
 }
 
@@ -182,8 +168,26 @@ nav {
 
 //responsive styling
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {  }
+// Small devices (landscape phones, 576px and down)
+@media (max-width: 400px) {
+    @mixin logo() {
+    font-family: 'Goblin One', cursive;
+    font-size: large;
+    color: blue;
+    }
+    .nav-link {
+        margin-left: 0 !important;
+    }
+    
+    #clogo {
+        margin-left: 0 !important;
+    }
+
+    .navbar-toggler {
+        margin: 0 !important;
+    }
+
+}
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {  }

@@ -53,46 +53,29 @@ nav ul .vr {
 }
 
 #Main {
-  height: 100vh;
   color: #fff;
   block-size: -webkit-fit-content;
   block-size: -moz-fit-content;
   block-size: fit-content;
   font-family: "Bebas Neue", cursive;
+  contain: content;
 }
-#Main img:nth-child(1) {
-  max-height: 50vh;
-}
-#Main h1:nth-child(1) {
-  font-family: "Raleway", sans-serif;
-}
-#Main h2 {
+#Main h1, #Main h2, #Main h3, #Main h4, #Main h5 {
   font-family: "Cinzel", serif;
-  font-family: "Playfair Display", serif;
-}
-#Main p {
-  font-family: "Playfair Display", serif;
 }
 
 #About {
-  height: 100vh;
   color: #fff;
   block-size: -webkit-fit-content;
   block-size: -moz-fit-content;
   block-size: fit-content;
   font-family: "Bebas Neue", cursive;
-  height: 100vh;
-  overflow: auto;
-  overflow: scroll;
 }
-#About div p:nth-child(1) {
+#About p {
+  font-family: "Cinzel", serif;
   letter-spacing: 0.1em;
 }
-#About div p {
-  font-family: "Raleway", sans-serif;
-}
 #Projects {
-  height: 100vh;
   color: #fff;
   block-size: -webkit-fit-content;
   block-size: -moz-fit-content;
@@ -105,13 +88,11 @@ nav ul .vr {
 }
 
 #Contact {
-  height: 100vh;
   color: #fff;
   block-size: -webkit-fit-content;
   block-size: -moz-fit-content;
   block-size: fit-content;
   font-family: "Bebas Neue", cursive;
-  height: 100vh;
   font-family: "Playfair Display", serif;
 }
 #Contact a {
@@ -126,14 +107,12 @@ nav ul .vr {
 }
 
 #Footer {
-  height: 100vh;
   color: #fff;
   block-size: -webkit-fit-content;
   block-size: -moz-fit-content;
   block-size: fit-content;
   font-family: "Bebas Neue", cursive;
   background-color: black;
-  height: 30vh;
 }
 #Footer img {
   height: 35px;
@@ -154,12 +133,26 @@ nav ul .vr {
   color: red;
   transform: scale(1.5);
 }
+#Footer .disableLink {
+  pointer-events: none;
+}
 
 #Construction {
-  height: 100vh;
   color: #fff;
   block-size: -webkit-fit-content;
   block-size: -moz-fit-content;
   block-size: fit-content;
   font-family: "Bebas Neue", cursive;
+}
+
+@media (max-width: 400px) {
+  .nav-link {
+    margin-left: 0 !important;
+  }
+  #clogo {
+    margin-left: 0 !important;
+  }
+  .navbar-toggler {
+    margin: 0 !important;
+  }
 }/*# sourceMappingURL=main.css.map */
