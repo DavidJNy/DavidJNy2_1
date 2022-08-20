@@ -70,6 +70,7 @@ nav ul .vr {
   block-size: -moz-fit-content;
   block-size: fit-content;
   font-family: "Bebas Neue", cursive;
+  min-height: 100vh;
 }
 #About p {
   font-family: "Cinzel", serif;
@@ -81,7 +82,7 @@ nav ul .vr {
   block-size: -moz-fit-content;
   block-size: fit-content;
   font-family: "Bebas Neue", cursive;
-  height: 100vh;
+  min-height: 100vh;
 }
 #Projects div p {
   font-family: "Playfair Display", serif;
@@ -93,17 +94,23 @@ nav ul .vr {
   block-size: -moz-fit-content;
   block-size: fit-content;
   font-family: "Bebas Neue", cursive;
+  min-height: 100vh;
+  letter-spacing: 0.15em;
+  line-height: 2;
   font-family: "Playfair Display", serif;
 }
 #Contact a {
   color: white;
   transition: 0.5s;
   transition-property: transform;
-  letter-spacing: 0.2em;
 }
 #Contact a:hover {
   color: red;
   transform: scale(1.5);
+}
+#Contact .alert {
+  width: 50%;
+  left: 25%;
 }
 
 #Footer {

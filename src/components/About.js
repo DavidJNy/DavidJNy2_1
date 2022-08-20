@@ -5,7 +5,7 @@ function About() {
 
     return (
         <>
-            <div id="About" class="text-light">
+            <div id="About" class="text-light mb-5">
                 <div class='row container border justify-contents-center mx-auto mt-5'>
                     <h1 class="display-5 mt-3 col-12 text-center ">
                         My name is David Ny and I'm a web developer.

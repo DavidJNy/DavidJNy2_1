@@ -1,5 +1,5 @@
 import { useState, React } from 'react';
-import { BsGithub, BsLinkedin } from 'react-icons/bs'
+import { BsGithub, BsLinkedin, BsCheck2 } from 'react-icons/bs'
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useEffect } from 'react';
@@ -10,27 +10,25 @@ function ContactMe () {
     const [vistorName, setVistorName] = useState('');
     const [vistorEmail, setVistorEmail] = useState('');
     const [vistorMessage, setVistorMessage] = useState('');
+    const [show, setShow] = useState(true);
     const publicReChapKey = "6Ldb6tIgAAAAAHjqzENAoVtM-7DPaXvBHjJD4f1Z"
     
-    
+
+        
     function onChange(value) {
         if (value == null) {
             setVerified(false)
         }
         else setVerified(!verified);
-
-        console.log("Captcha value:", value);
-        console.log('you passed')
     }
     
     
     useEffect(() => {
-        // Update the document title using the browser API
-        console.log("page reloaded " + new Date())
-        console.log(verified)
-    });
+        // console.log("page reloaded " + new Date())
+        // console.log(verified)
+    },[show]);
 
-    const sendEmail = (e) => {
+    function sendEmail (e) {
         e.preventDefault();
         emailjs.sendForm("service_y3y5wnt", "template_mzxvv08", e.target , "NcI_XxwCuCd3nSlEp")
             .then(function (response) {
@@ -39,14 +37,16 @@ function ContactMe () {
                 console.log('FAILED...', error);
                 //We can custimize this a bit. follow the error comings through.
             });
-        
+
+        setShow(false);
         setVistorName('');
         setVistorEmail('');
         setVistorMessage('');
     };
 
+    
         return (
-            <div id="Contact" class='container pb-5'>
+            <div id="Contact" class='container my-5'>
                     <div class=''>
                         <h1 class=''>Contact Me</h1>
                         <hr class='solid'></hr>
@@ -56,17 +56,18 @@ function ContactMe () {
                             feel confident enough to build this website. <br /><br />Thanks! Much Love  <i class="fa-solid fa-2xl fa-heart"></i>
                         </p>
                         <p>Click here for my Github and Linkedin: &emsp;<a href="https://github.com/DavidJNy"><BsGithub size='2em' color='white' /></a> &emsp; 
-                            <a href="https://www.linkedin.com/in/DavidJNy"><BsLinkedin size='2em' color='white'/></a>
+                        <a href="https://www.linkedin.com/in/DavidJNy"><BsLinkedin size='2em' color='white' /></a>
                         </p>
                         <hr class="solid"></hr>
                     </div>
                     <h2> Go ahead and shoot me an email by filling out the form</h2>
                     <p> I'm looking all types of work so feel free to contact me &nbsp;
                     </p>
+                {/* It could look better to add bootstrap Floating labels (https://getbootstrap.com/docs/5.0/forms/floating-labels/#textareas) */}
                     <form name="container" class="row" method="PUT" id="myForm" onSubmit={sendEmail}>
                         <div class='col'>
                             <label class="m-2" htmlFor="name"> Name </label>
-                        <input type="text" id="name" name="from_name" class="form-control" placeholder="First Name and Last Name" required onChange={event => setVistorName(event.target.value)} value={vistorName} />
+                            <input type="text" id="name" name="from_name" class="form-control" placeholder="First Name and Last Name" required onChange={event => setVistorName(event.target.value)} value={vistorName} />
                         </div>
                         <div class='col'>
                             <label htmlFor="email" class="form-label m-2"> Email </label>
@@ -85,8 +86,15 @@ function ContactMe () {
                             theme={'dark'}
                             />
                         </div>
-                    <button type="submit" class="btn-lg btn-primary m-3 flex-fill flex-wrap" disabled={!verified}> Submit </button>
-                    </form>
+                    <button type="submit" class="btn btn-lg btn-primary m-3 flex-fill flex-wrap" disabled={!verified}> Submit </button>
+                </form>
+                {!show && <div>
+                    <div class="alert alert-success alert-dismissible fade show text-center fixed-bottom" role="alert">
+                        <h4 class="alert-heading"><BsCheck2 /><strong> Well done!</strong></h4>
+                        <p>Message sent! I'll get back to you as soon as I can</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div> }
             </div>                
     )
 }

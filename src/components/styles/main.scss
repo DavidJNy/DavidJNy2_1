@@ -1,5 +1,6 @@
 @import './custom.scss';
 
+
 //IDK WHY I can't import bootstrap variables of the different
 //shades of colors.
 
@@ -98,7 +99,7 @@ nav {
 
 #About {
     @include baseline;
-    
+    min-height: 100vh;
     p {
         font-family: 'Cinzel', serif;
         letter-spacing: 0.1em;
@@ -110,7 +111,7 @@ nav {
 
 #Projects {
     @include baseline;
-    height: 100vh;
+    min-height: 100vh;
     div p {
         font-family: 'Playfair Display', serif;
     }
@@ -118,17 +119,24 @@ nav {
 
 #Contact {
     @include baseline;
-    
+    min-height: 100vh;
+    letter-spacing: 0.15em;
+    line-height: 2;
+
     font-family: 'Playfair Display', serif;
     a {
         color: white;
         transition: 0.5s;
         transition-property: transform;
-        letter-spacing: 0.2em;
         &:hover{
             color: red;
             transform: scale(1.5);
         }
+    }
+
+    .alert {
+        width: 50%;
+        left: 25%;
     }
 }
 
