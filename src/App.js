@@ -6,7 +6,7 @@ import About from './components/About.js';
 import ContactMe from './components/Contact.js';
 import YouLost from './components/YouLost.js';
 import Footer from './components/Footer.js';
-import './components/styles/main.css';
+import './components/styles/main.scss';
 
 function App() {
 

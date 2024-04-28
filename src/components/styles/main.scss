@@ -41,7 +41,7 @@
 //css styling
 
 #App {
-    background-color: rgb(20, 20, 20);
+    background-color: rgb(61, 61, 61);
     font-family: 'Raleway', sans-serif;
 
 }
@@ -51,7 +51,7 @@ nav {
     position: sticky;
     z-index: 1;
     top: 0px;
-    background-color: black;
+    background-color: white;
 
     img {
         height: 35px;
@@ -72,8 +72,7 @@ nav {
             font-size: small;
             color: red;
             &:focus, &:hover{
-                color: white;
-                // background-color: #fff;
+                color: black;
             }
         }
         .vr {
@@ -86,7 +85,7 @@ nav {
 
 #Main {
     @include baseline;
-    contain: content;
+    min-height: 100vh;
     img {
         // @include backLight();
          
@@ -142,7 +141,7 @@ nav {
 
 #Footer {
     @include baseline;
-    background-color: black;
+    background-color: rgb(61, 61, 61);
 
     img {
         height: 35px;
