@@ -6,29 +6,12 @@ import { CgFormatJustify }from 'react-icons/cg';
 
 function NavigationBar() {
 
-    // const navLinks = document.querySelectorAll('.nav-link')
-    // const menuToggle = document.getElementById('navbarNav')
-    // const bsCollapse = new bootstrap.Collapse(menuToggle)
-    // navLinks.forEach((l) => {
-    //     l.addEventListener('click', () => { bsCollapse.toggle() })
-    // })
-    
-    // window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
-
-    // const bsCollapse = new bootstrap.Collapse('#myCollapse', {
-    //     toggle: false
-    // })
-
-    // const collapseElementList = document.querySelectorAll('.collapse')
-    // const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl))
-
-
-    return (
+      return (
         <>
         <nav class="navbar navbar-expand-sm position-sticky">
             <Link class="nav-link d-flex ms-5" to="/" >
                 <img alt="logo" src={ChiliLogo2} id="clogo" class="mx-2 ms-5" />
-                <h2 class="mt-2">Prick Tox</h2>
+                <h2 class="mt-2 ">David J Ny</h2>
             </Link>
                 <button class="navbar-toggler m-3 float-right" type="button" 
             data-bs-toggle="collapse" data-bs-target="#navbarNav" 

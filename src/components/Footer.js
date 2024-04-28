@@ -20,9 +20,9 @@ function Footer() {
                         <BsInstagram size='3em'/></a></div>
                 <div class='d-flex justify-content-center py-3'>
                     <img alt="logo" src={ChiliLogo2} id="clogo" class="mx-2 justify-content-center" />
-                    <h2 class="d-flex justify-content-center" >Prick Tox</h2>
+                    <h2 class="d-flex justify-content-center" >David J Ny</h2>
                 </div>
-                <div class="d-flex justify-content-center py-3">© 2022 PrickTox . All rights reserved.</div>
+                <div class="d-flex justify-content-center py-3">© 2024 David J . All rights reserved.</div>
                 <div class='container justify-content-center d-sm-block d-md-flex'>
                     {/* Add quick 3 pages for these links & remove disableLink class*/}
                     <Link class='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Privacy_Notice">Privacy Notice</Link>

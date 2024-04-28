@@ -14,8 +14,12 @@ function Projects() {
                     Here is a list of my active/prospective projects.
                 </p>
             </div>
-            <div class="">
-                
+            <div class="project_container">
+                <div>
+                    <div>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -37,16 +37,16 @@ nav img {
 nav h2 {
   font-family: "Goblin One", cursive;
   font-size: xx-large;
-  color: red;
+  color: rgb(255, 255, 255);
 }
 nav ul .nav-link {
   padding-right: 1em;
   font-family: "Goblin One", cursive;
   font-size: small;
-  color: red;
+  color: rgb(255, 255, 255);
 }
 nav ul .nav-link:focus, nav ul .nav-link:hover {
-  color: white;
+  color: red;
 }
 nav ul .vr {
   width: 1px;
