@@ -1,21 +1,13 @@
 @import './custom.scss';
 
+// Variables
+$enable-negative-margins: true;
 
-//IDK WHY I can't import bootstrap variables of the different
-//shades of colors.
-
-// font-family: 'Bebas Neue', cursive;
-// font-family: 'Cinzel', serif;
-// font-family: 'Goblin One', cursive;
-// font-family: 'Permanent Marker', cursive;
-// font-family: 'Playfair Display', serif;
-// font-family: 'Raleway', sans-serif;
-
-
+// Mixins
 @mixin baseline() {
     color: #fff;
     block-size: fit-content;
-    font-family: 'Bebas Neue', cursive;
+    min-height: 100vh;
 }
 
 @mixin logo() {
@@ -28,6 +20,7 @@
     box-shadow: 0px 0px 54px -4px rgba(255,255,255,0.7);
 }
 
+// Keyframes
 @keyframes movedown {
     0% {
         transform: translateY(-100px);
@@ -38,31 +31,29 @@
         visibility: visible;
     }
 }
-//css styling
+
+// Global Styles
+body {
+    font-family: 'Raleway', sans-serif;
+}
 
 #App {
     background-color: rgb(61, 61, 61);
-    font-family: 'Raleway', sans-serif;
-
+    width: 100%;
 }
 
+// Navigation
 nav {
-    position: -webkit-sticky;
     position: sticky;
-    z-index: 1;
     top: 0px;
     background-color: white;
-
+    width: 100%;
     img {
         height: 35px;
-    };
+    }
 
     h2 {
         @include logo;
-    }
-
-    button {
-
     }
 
     ul {
@@ -71,63 +62,58 @@ nav {
             font-family: 'Goblin One', cursive;
             font-size: small;
             color: red;
-            &:focus, &:hover{
-                color: black;
+            &:focus, &:hover {
+                color: rgb(0, 0, 0);
             }
         }
+
         .vr {
-            width: 1px;            
+            width: 1px;
         }
     }
-
 }
 
+// Main Section
+#Main, #About, #Projects, #Contact {
+    @include baseline;
+}
 
 #Main {
-    @include baseline;
-    min-height: 100vh;
-    img {
-        // @include backLight();
-         
-    }
-    
+    img {}
+
     h1, h2, h3, h4, h5 {
         font-family: 'Cinzel', serif;
+    }
+
+    .RotatingGlobe {
+        overflow: hidden;
+        height: 50vh;
     }
 }
 
 #About {
-    @include baseline;
-    min-height: 100vh;
     p {
         font-family: 'Cinzel', serif;
         letter-spacing: 0.1em;
     }
-    img {
-
-        }
 }
 
 #Projects {
-    @include baseline;
-    min-height: 100vh;
     div p {
         font-family: 'Playfair Display', serif;
     }
 }
 
 #Contact {
-    @include baseline;
-    min-height: 100vh;
     letter-spacing: 0.15em;
     line-height: 2;
-
     font-family: 'Playfair Display', serif;
+
     a {
         color: white;
         transition: 0.5s;
         transition-property: transform;
-        &:hover{
+        &:hover {
             color: red;
             transform: scale(1.5);
         }
@@ -140,8 +126,7 @@ nav {
 }
 
 #Footer {
-    @include baseline;
-    background-color: rgb(61, 61, 61);
+    background-color: rgb(255, 255, 255);
 
     img {
         height: 35px;
@@ -152,72 +137,59 @@ nav {
     }
 
     div > a {
-        color: white;
+        color: rgb(0, 0, 0);
         transition: 0.5s;
         transition-property: transform;
         font-family: 'Raleway', sans-serif;
         letter-spacing: 0.2em;
-        &:hover{
+        &:hover {
             color: red;
             transform: scale(1.5);
         }
     }
+
     .disableLink {
         pointer-events: none;
     }
 
+    .AllRights {
+        color: black;
+    }
 
+    .hack {
+        border: 1px solid black;
+    }
 }
 
-#Construction {
-    @include baseline;
-}
-
-//responsive styling
-
+// Media Queries
 // Small devices (landscape phones, 576px and down)
-@media (max-width: 400px) {
-    @mixin logo() {
-    font-family: 'Goblin One', cursive;
-    font-size: large;
-    color: blue;
+@media (max-width: 576px) {
+    nav {
+        img {
+            margin-left: 10px;
+        }
+        .nav-link {
+            margin-left: 0 !important;
+        }
     }
-    .nav-link {
-        margin-left: 0 !important;
-    }
-    
-    #clogo {
-        margin-left: 0 !important;
-    }
-
     .navbar-toggler {
-        margin: 0 !important;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        line-height: 1;
+        border-radius: 0.2rem;
     }
-
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {  }
+@media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {  }
+@media (min-width: 992px) {}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) {}
 
-// @include media-breakpoint-up(xs) {  }
-// @include media-breakpoint-up(sm) {  }
-// @include media-breakpoint-up(md) {  }
-// @include media-breakpoint-up(lg) {  }
-// @include media-breakpoint-up(xl) {  }
-
-// // Example usage:
-// @include media-breakpoint-up(sm) {
-// //   .some-class {
-// //     display: block;
-// //   }
-// }
-
+// Z-Index Variables
 $zindex-dropdown:          1000 !default;
 $zindex-sticky:            1020 !default;
 $zindex-fixed:             1030 !default;

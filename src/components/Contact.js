@@ -55,8 +55,8 @@ function ContactMe () {
                             With a wide variety of helpful resources that other developers share from StackOverflow, Youtube, Medium, and discord; I actually
                             feel confident enough to build this website. <br /><br />Thanks! Much Love  <i class="fa-solid fa-2xl fa-heart"></i>
                         </p>
-                        <p>Click here for my Github and Linkedin: &emsp;<a href="https://github.com/DavidJNy"><BsGithub size='2em' color='white' /></a> &emsp; 
-                        <a href="https://www.linkedin.com/in/DavidJNy"><BsLinkedin size='2em' color='white' /></a>
+                        <p>Click here for my Github and Linkedin: &emsp;<a target="_blank" href="https://github.com/DavidJNy"><BsGithub size='2em' color='white' /></a> &emsp; 
+                        <a target="_blank" href="https://www.linkedin.com/in/DavidJNy"><BsLinkedin size='2em' color='white' /></a>
                         </p>
                         <hr class="solid"></hr>
                     </div>

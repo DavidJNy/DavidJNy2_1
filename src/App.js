@@ -12,7 +12,7 @@ function App() {
 
   return (
 
-    <div id="App" class='text-light'>
+    <div id="App" class=''>
       <NavigationBar/>
       <Routes>
         <Route path="/" element={<Main/>}/>
@@ -28,5 +28,3 @@ function App() {
 }
 
 export default App;
-
-//figure out how to get variables from bootstrap and map.
