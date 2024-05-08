@@ -10,6 +10,7 @@
     "autoprefixer": "^10.4.8",
     "bootstrap": "^5.3.3",
     "emailjs-com": "^3.2.0",
+    "express": "^4.19.2",
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0",
     "react": "^18.2.0",
