@@ -6,12 +6,12 @@ function Main() {
 
     return (
         <>
-            <div id='Main' class='justify-content-center container'>
+            <div id='Main' className='justify-content-center container'>
                 <div>
-                    <div class='text-center pt-3 fs-1'>
+                    <div className='text-center pt-3 fs-1'>
                         Welcome
                     </div>
-                    <div class='RotatingGlobe justify-content-center '>
+                    <div className='RotatingGlobe justify-content-center '>
                       <RotatingGlobe />
                     </div>
                 </div>

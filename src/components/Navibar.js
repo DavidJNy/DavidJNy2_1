@@ -34,25 +34,25 @@ function NavigationBar() {
 
       return (
         <div>
-            <nav class="navbar navbar-expand-sm position-sticky">
-                <div class="container-lg d-flex justify-content-between">
-                    <Link class="nav-link d-flex justify-content-center" to="/" >
-                        <img alt="logo" src={ChiliLogo2} id="clogo" class="mt-1 me-2" />
-                        <h2 class="mt-2 title">{viewportContent}</h2>
+            <nav className="navbar navbar-expand-sm position-sticky">
+                <div className="container-lg d-flex justify-content-between">
+                    <Link className="nav-link d-flex justify-content-center" to="/" >
+                        <img alt="logo" src={ChiliLogo2} id="clogo" className="mt-1 me-2" />
+                        <h2 className="mt-2 title">{viewportContent}</h2>
                     </Link>
                     <div>
-                        <button class="navbar-toggler ml-auto" type="button" 
+                        <button className="navbar-toggler ml-auto" type="button" 
                             data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                             aria-controls="navbarNav" aria-expanded="false" 
                             aria-label="Toggle navigation">
                         <CgFormatJustify size='1.5em' color='red'/>
                         </button>
                     </div>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <Link class="nav-link d-flex justify-content-center" to="/About" >About</Link>
-                            <Link class="nav-link d-flex justify-content-center" to="/Projects" ><FaReact class='mx-1' size='1.5em' /> Projects</Link>
-                                <Link class="nav-link d-flex justify-content-center" to="/Contact" ><FaPhone class='mx-1' size='1.5em' /> Contact</Link>
+                        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul className="navbar-nav">
+                                <Link className="nav-link d-flex justify-content-center" to="/About" >About</Link>
+                            <Link className="nav-link d-flex justify-content-center" to="/Projects" ><FaReact className='mx-1' size='1.5em' /> Projects</Link>
+                                <Link className="nav-link d-flex justify-content-center" to="/Contact" ><FaPhone className='mx-1' size='1.5em' /> Contact</Link>
                         </ul>
                     </div>
                 </div>

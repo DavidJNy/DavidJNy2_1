@@ -31,31 +31,31 @@ function Footer() {
 
 
     return (
-        <div id='Footer' class='pb-5'>
-            <div class='container justify-content-center'>
-                <div class='d-flex justify-content-center py-1'>
-                    <a target="_blank" rel="noreferrer" class='m-2' href="https://www.facebook.com/DavidJNeee/">
+        <div id='Footer' className='pb-5'>
+            <div className='container justify-content-center'>
+                <div className='d-flex justify-content-center py-1'>
+                    <a target="_blank" rel="noreferrer" className='m-2' href="https://www.facebook.com/DavidJNeee/">
                         <BsFacebook size='2em'/></a>
-                    <a target="_blank" rel="noreferrer" class='m-2' href="https://www.linkedin.com/in/davidjny/">
+                    <a target="_blank" rel="noreferrer" className='m-2' href="https://www.linkedin.com/in/davidjny/">
                         <BsLinkedin size='2em'/></a>
-                    {/* <a target="_blank" rel="noreferrer" class='m-2' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                    {/* <a target="_blank" rel="noreferrer" className='m-2' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
                         <BsYoutube size='2em'/></a> */}
-                    <a target="_blank" rel="noreferrer" class='m-2' href="https://www.instagram.com/psykomcnasty/">
+                    <a target="_blank" rel="noreferrer" className='m-2' href="https://www.instagram.com/psykomcnasty/">
                         <BsInstagram size='2em'/></a></div>
-                <div class='d-flex justify-content-center py-1'>
-                    <img alt="logo" src={ChiliLogo2} id="clogo" class="mx-2 justify-content-center" />
-                    <h2 class="d-flex text-center" >{viewportContent}</h2>
+                <div className='d-flex justify-content-center py-1'>
+                    <img alt="logo" src={ChiliLogo2} id="clogo" className="mx-2 justify-content-center" />
+                    <h2 className="d-flex text-center" >{viewportContent}</h2>
                 </div>
-                <div class="d-flex text-center AllRights justify-content-center" >© 2024 David J . All rights reserved.</div>
-                {/* <div class='container justify-content-center d-sm-block d-md-flex'>
+                <div className="d-flex text-center AllRights justify-content-center" >© 2024 David J . All rights reserved.</div>
+                {/* <div className='container justify-content-center d-sm-block d-md-flex'>
                     {/* Add quick 3 pages for these links & remove disableLink class
-                    <Link class='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Privacy_Notice">Privacy Notice</Link>
-                    <Link class='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Terms_of_Service">Terms of service</Link>
-                    <Link class='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Cookie_preferences">Cookie preferences</Link> 
+                    <Link className='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Privacy_Notice">Privacy Notice</Link>
+                    <Link className='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Terms_of_Service">Terms of service</Link>
+                    <Link className='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Cookie_preferences">Cookie preferences</Link> 
                 </div> */}
             </div>
-            {/* <div class='hack'>
-                <a target="_blank" rel="noreferrer" class='m-2' href="">
+            {/* <div className='hack'>
+                <a target="_blank" rel="noreferrer" className='m-2' href="">
                 </a>
             </div> */}
         </div>
