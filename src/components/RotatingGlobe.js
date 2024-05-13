@@ -1,5 +1,5 @@
 import React, { useRef} from 'react';
-import { Canvas, useFrame } from 'react-three-fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 
 function Cube() {
   const groupRef = useRef();
