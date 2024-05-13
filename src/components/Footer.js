@@ -46,7 +46,7 @@ function Footer() {
                     <img alt="logo" src={ChiliLogo2} id="clogo" class="mx-2 justify-content-center" />
                     <h2 class="d-flex text-center" >{viewportContent}</h2>
                 </div>
-                <div class="d-flex text-center AllRights justify-content-center" >© 2024 David J. Ny | All rights reserved.</div>
+                <div class="d-flex text-center AllRights justify-content-center" >© 2024 David J . All rights reserved.</div>
                 {/* <div class='container justify-content-center d-sm-block d-md-flex'>
                     {/* Add quick 3 pages for these links & remove disableLink class
                     <Link class='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Privacy_Notice">Privacy Notice</Link>
