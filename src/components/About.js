@@ -1,5 +1,4 @@
 import proPix from './images/meprofile.jpg';
-import luckyPic from './images/luckypic.jpg';
 
 function About() {
 
@@ -28,9 +27,6 @@ function About() {
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div class='d-block d-sm-none'>
-                        <img src={luckyPic} class='img-fluid m-2 d-none d-sm-flex' height='200px' alt='LuckPic'></img>
                     </div>
                 </div>
             </div>

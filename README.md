@@ -1,3 +1,3 @@
-# Pricktox 2.0
+# David J Ny 2.0
 
-My second revision of my portfolio page
+My portfolio page

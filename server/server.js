@@ -1,20 +1,19 @@
-// Importing required modules
 const express = require('express');
-
-// Creating an Express application
-const app = express();
 const path = require('path');
+const app = express();
+const port = 8000; // Choose a port number for your Express server
 
-// Define a route
-// app.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
+// Serve static files from the 'build' folder
+app.use(express.static(path.join(__dirname, 'build')));
 
-// Start the server
-const port = process.env.PORT || 3000;
+// Define your API routes or other routes here
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port} http://localhost:3000/`);
+// Serve index.html for all other routes
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.use(express.static("build"));
+// Start the Express server
+app.listen(port, () => {
+  console.log(`Express server is listening on port ${port}`);
+});

@@ -1,5 +1,5 @@
 import NavigationBar from "./components/Navibar.js";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Projects from './components/Projects.js';
 import Main from './components/Main.js';
 import About from './components/About.js';
@@ -11,18 +11,19 @@ import './components/styles/main.scss';
 function App() {
 
   return (
-
-    <div id="App">
+    <BrowserRouter>
+     <div id="App">
       <NavigationBar/>
-      <Routes>
+       <Routes>
         <Route path="/" element={<Main/>}/>
         <Route path="/About" element={<About/>}/>
         <Route path="/Projects" element={<Projects/>}/>
         <Route path="/Contact" element={<ContactMe/>}/>
         <Route path="*" element={<YouLost/>}/>
-      </Routes>
+        </Routes>
       <Footer/>
-    </div>
+     </div>
+    </BrowserRouter>
 
   );
 }

@@ -5,7 +5,11 @@ echo "Building app..."
 npm run build
 
 echo "Deploying files to server..."
-scp -r build/* /var/www/davidjny/
+scp -r build/* /Home/Psyko/DavidJNy2_1/server
+
+#serve -s build -l 3000
+cd server
+npm run start
 
 echo "Done!"
 
