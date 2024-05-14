@@ -1,6 +1,39 @@
-version: '3'
+version: '3.8'
+
 services:
-  react-app:
+  web:
+    image: node:19-alpine
     build: .
+    container_name: davidport
     ports:
-      - "3000:3000"
+      - "3080:3000"
+    volumes:
+      - ./html:/usr/share/app/html
+    networks:
+      - frontend
+    stdin_open: true
+    tty: true
+  express:
+    image: node:19-alpine
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    networks:
+      - backend2
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+  backend2:
+
+volumes:
+  dbdata:

@@ -2,7 +2,7 @@
 FROM node:19-alpine
 
 # Set the working directory in the container
-WORKDIR /usr/app
+WORKDIR /app
 
 # Copy package.json and package-lock.json (if available)
 COPY package.json .
@@ -12,7 +12,9 @@ COPY package.json .
 RUN npm install
 
 # Copy the rest of the application files
-COPY . .
+COPY /src /app/
+COPY /public /app/
+COPY /server /app/
 
 # Expose port 3000 to the outside world
 EXPOSE 3000
