@@ -5,6 +5,8 @@ echo "Building app..."
 npm run build
 
 echo "Deploying files to server..."
-scp -r build/* Psyko@raspberrypi:/var/www/davidjny/
+scp -r build/* /var/www/davidjny/
 
 echo "Done!"
+
+# run sudo ./deploy.sh
