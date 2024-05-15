@@ -11,7 +11,7 @@ echo "Deploying files to server..."
 scp -r build/ /home/git/DavidJNy2_1/server
 
 #serve -s build -l 3000
-file_path="/home/Psyko/git/DavidJNy2_1/server/server.js"
+file_path="/home/git/DavidJNy2_1/server/server.js"
 
 node "$file_path"
 
