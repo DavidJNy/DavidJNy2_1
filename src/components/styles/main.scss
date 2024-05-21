@@ -11,7 +11,6 @@ $enable-negative-margins: true;
 }
 
 @mixin logo() {
-    font-family: 'Goblin One', cursive;
     font-size: xx-large;
     color: red;
 }
@@ -33,13 +32,11 @@ $enable-negative-margins: true;
 }
 
 // Global Styles
-body {
-    font-family: 'Raleway', sans-serif;
-}
 
 #App {
     background-color: rgb(61, 61, 61);
     width: 100%;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 // Navigation
@@ -59,7 +56,6 @@ nav {
     ul {
         .nav-link {
             padding-right: 1em;
-            font-family: 'Goblin One', cursive;
             font-size: small;
             color: red;
             &:focus, &:hover {
@@ -82,7 +78,7 @@ nav {
     img {}
 
     h1, h2, h3, h4, h5 {
-        font-family: 'Cinzel', serif;
+    
     }
 
     .RotatingGlobe {
@@ -93,21 +89,19 @@ nav {
 
 #About {
     p {
-        font-family: 'Cinzel', serif;
         letter-spacing: 0.1em;
     }
 }
 
 #Projects {
     div p {
-        font-family: 'Playfair Display', serif;
+        
     }
 }
 
 #Contact {
     letter-spacing: 0.15em;
     line-height: 2;
-    font-family: 'Playfair Display', serif;
 
     a {
         color: white;
@@ -140,7 +134,6 @@ nav {
         color: rgb(0, 0, 0);
         transition: 0.5s;
         transition-property: transform;
-        font-family: 'Raleway', sans-serif;
         letter-spacing: 0.2em;
         &:hover {
             color: red;
