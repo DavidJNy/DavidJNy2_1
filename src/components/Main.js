@@ -1,6 +1,7 @@
-
 import React from 'react';
 import RotatingGlobe from './RotatingGlobe.js';
+import ChatWebSocket from './ChatWebSocket.js'
+
 
 function Main() {
 
@@ -14,6 +15,9 @@ function Main() {
                     <div className='RotatingGlobe justify-content-center '>
                       <RotatingGlobe />
                     </div>
+                </div>
+                <div>
+                    <ChatWebSocket/>
                 </div>
             </div>
         </>

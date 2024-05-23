@@ -1,6 +1,6 @@
 
 // import constructImg from './images/underConstruct.png'
-
+import ProjectCarousel from './ProjectCarousel';
 
 function Projects() {
 
@@ -15,11 +15,7 @@ function Projects() {
                 </p>
             </div>
             <div class="project_container">
-                <div>
-                    <div>
-                        
-                    </div>
-                </div>
+                <ProjectCarousel />
             </div>
         </div>
     );
