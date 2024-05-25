@@ -27,8 +27,8 @@ echo "Stopping server"
 sudo systemctl stop myexpressapp
 
 echo "Loading new server"
-node "$file_path"
-node "$file_path_websocket"
+node "$file_path" &
+node "$file_path_websocket" &
 
 
 echo "Rebooting server/services"
