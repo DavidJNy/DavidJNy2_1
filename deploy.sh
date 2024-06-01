@@ -1,9 +1,9 @@
 # Serve static files
 serve -s build -l 3000
 
-server_path="/home/git/DavidJNy2_1/server/"
-file_path="/home/git/DavidJNy2_1/server/server.js"
-file_path_websocket="/home/git/DavidJNy2_1/server/websocket.js"
+server_path="/home/Document/DavidJNy2_1/server/"
+file_path="/home/Document/DavidJNy2_1/server/server.js"
+file_path_websocket="/home/Document/DavidJNy2_1/server/websocket.js"
 
 echo "Switching to branch master"
 echo "Pulling from main"
