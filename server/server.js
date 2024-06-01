@@ -14,9 +14,9 @@ const options = {
     cert: fs.readFileSync('/etc/letsencrypt/live/davidjny.asuscomm.com/fullchain.pem')
 };
 
-https.createServer(options, app).listen(port, () => {
-    console.log('HTTPS Server running on port ${port}');
-});
+// https.createServer(options, app).listen(port, () => {
+//     console.log('HTTPS Server running on port ${port}');
+// });
 
 // Define your API routes or other routes here
 
