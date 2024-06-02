@@ -9,10 +9,10 @@ const port = process.env.PORT || 3000;; // Choose a port number for your Express
 // app.use(express.static(path.join(__dirname, 'build')));
 
 
-// const options = {
-//     key: fs.readFileSync('/etc/letsencrypt/live/davidjny.asuscomm.com/privkey.pem'),
-//     cert: fs.readFileSync('/etc/letsencrypt/live/davidjny.asuscomm.com/fullchain.pem')
-// };
+const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/davidjny.asuscomm.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/davidjny.asuscomm.com/fullchain.pem')
+};
 
 // https.createServer(options, app).listen(port, () => {
 //     console.log('HTTPS Server running on port ${port}');
