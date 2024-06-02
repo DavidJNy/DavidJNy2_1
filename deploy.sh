@@ -1,7 +1,7 @@
 # Serve static files
 serve -s build -l 3000
 
-server_path="/home/Docuemnts/DavidJNy2_1/server/"
+server_path="/home/Psyko/Documents/DavidJNy2_1/server/"
 file_path="/home/Docuemnts/DavidJNy2_1/server/server.js"
 file_path_websocket="/home/Docuemnts/DavidJNy2_1/server/websocket.js"
 
