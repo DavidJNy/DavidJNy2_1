@@ -22,7 +22,7 @@ const port = process.env.PORT || 3000;; // Choose a port number for your Express
 
 // Serve index.html for all other routes
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  // res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 

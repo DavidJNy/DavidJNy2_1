@@ -17,7 +17,7 @@ function Main() {
                     </div>
                 </div>
                 <div>
-                    <ChatWebSocket/>
+                    {/* <ChatWebSocket/> */}
                 </div>
             </div>
         </>

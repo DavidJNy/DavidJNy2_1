@@ -1,58 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import io from 'socket.io-client';
-// import './App.css';
+import React, { useState } from 'react';
 
-const socket = io('/ws/');
+const Login = ({ setToken }) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-function ChatWebSocket() {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
-
-  useEffect(() => {
-    socket.on('connect', () => {
-      console.log('Connected to the server');
-    });
-
-    socket.on('message', (data) => {
-      setMessages(prevMessages => [...prevMessages, data]);
-    });
-
-    socket.on('disconnect', () => {
-      console.log('Disconnected from the server');
-    });
-
-    // Cleanup on component unmount
-    return () => {
-      socket.off('connect');
-      socket.off('message');
-      socket.off('disconnect');
+    const login = async () => {
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }),
+        });
+        const data = await response.json();
+        setToken(data.token);
     };
-  }, []);
 
-  const sendMessage = () => {
-    if (input) {
-      socket.emit('message', input);
-      setInput('');
-    }
-  };
+    return (
+        <div>
+            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <button onClick={login}>Login</button>
+        </div>
+    );
+};
 
-  return (
-    <div className="App">
-      <h1>Socket.IO Client</h1>
-      <div id="messages">
-        {messages.map((message, index) => (
-          <div key={index}>{message}</div>
-        ))}
-      </div>
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Type a message"
-      />
-      <button onClick={sendMessage}>Send</button>
-    </div>
-  );
-}
-
-export default ChatWebSocket;
+export default Login;

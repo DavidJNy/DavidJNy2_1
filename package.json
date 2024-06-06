@@ -3,8 +3,14 @@
   "version": "2.1",
   "private": true,
   "dependencies": {
-    "@emailjs/browser": "^3.6.2",
+    "@babel/plugin-transform-class-properties": "^7.24.7",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.7",
+    "@babel/plugin-transform-private-methods": "^7.24.7",
+    "@babel/plugin-transform-private-property-in-object": "^7.24.7",
+    "@emailjs/browser": "^3.12.1",
+    "@jridgewell/sourcemap-codec": "^1.4.15",
     "@react-three/fiber": "^8.16.6",
+    "@rollup/plugin-terser": "^0.4.4",
     "@types/three": "^0.164.0",
     "bootstrap": "^5.3.3",
     "emailjs-com": "^3.2.0",
@@ -15,32 +21,13 @@
     "react-icons": "^4.4.0",
     "react-multi-carousel": "^2.8.5",
     "socket.io-client": "^4.7.5",
+    "svgo": "^3.3.2",
     "three": "^0.164.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "build": "react-scripts build"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
