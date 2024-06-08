@@ -13,12 +13,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Serve index.html for all other routes
 app.get('/*', function(req, res) {
-<<<<<<< HEAD
   // res.sendFile(path.join(__dirname, 'build', 'index.html'));
-=======
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  
->>>>>>> 4a825cce42991e8c7615af33bfc79a90509776fd
 });
 
 
