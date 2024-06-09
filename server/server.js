@@ -18,12 +18,12 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Serve index.html for all other routes
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // Start the Express server
-server.listen(port, () => {
-  console.log(`Express server is listening on port ${port}`);
+server.listen(PORT, () => {
+  console.log(`Express server is listening on port ${PORT}`);
 });
 
 
