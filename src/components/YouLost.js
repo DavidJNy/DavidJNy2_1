@@ -7,7 +7,7 @@ function App() {
   return (
 
     <div class='container text-white text-center'>
-      you looks lost yo
+      Opp... Something went wrong.
       <img src={thaiboats} alt='' class='img-fluid'></img>
     </div>
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import RotatingGlobe from './RotatingGlobe.js';
-import ChatWebSocket from './ChatWebSocket.js'
 
 
 function Main() {
@@ -16,9 +15,6 @@ function Main() {
                       <RotatingGlobe />
                     </div>
                 </div>
-                <div>
-                    {/* <ChatWebSocket/> */}
-                </div>
             </div>
         </>
     );
@@ -26,6 +22,6 @@ function Main() {
 
 export default Main;
 
-//https://www.youtube.com/watch?v=O4u8n_CjUDY&ab_channel=Honoka%26Azita
-//Maybe add https://codepen.io/wefiy/pen/WPpEwo (Tacky matrix wallpaper behind logo) :)
+// https://www.youtube.com/watch?v=O4u8n_CjUDY&ab_channel=Honoka%26Azita
+// Maybe add https://codepen.io/wefiy/pen/WPpEwo (Tacky matrix wallpaper behind logo) :)
 // https://alvarotrigo.com/blog/css-animations-scroll/

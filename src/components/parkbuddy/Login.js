@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const Login = ({ setToken }) => {
+function MainLogin  ({ setToken }) {
+    
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -23,4 +24,4 @@ const Login = ({ setToken }) => {
     );
 };
 
-export default Login;
+export default MainLogin;

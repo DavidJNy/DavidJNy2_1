@@ -5,28 +5,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const projects = [
   {
-    title: 'Project One',
-    description: 'Description for project one. This project is about...',
-    imageUrl: 'https://via.placeholder.com/800x400',
-    link: 'https://example.com/project-one'
+    title: 'Park Buddy',
+    description: 'Find out whos at the park for pick up games.',
+    imageUrl: 'https://i.ytimg.com/vi/nd5--EqzLPY/maxresdefault.jpg',
+    link: '/ParkBuddy'
   },
   {
-    title: 'Project Two',
-    description: 'Description for project two. This project involves...',
-    imageUrl: 'https://via.placeholder.com/800x400',
-    link: 'https://example.com/project-two'
+    title: 'Dad Jokes',
+    description: 'Want some quick dad jokes?',
+    imageUrl: 'https://s3-prod.adage.com/s3fs-public/20230109_Progressive-Insurance_TV-Dad-Braces_3X2.jpg',
+    link: '/DadJokes'
   },
   {
-    title: 'Project Three',
-    description: 'Description for project three. The main focus is...',
-    imageUrl: 'https://via.placeholder.com/800x400',
-    link: 'https://example.com/project-three'
+    title: 'Deep Value Trades',
+    description: 'Find some oversold stock for a bounce',
+    imageUrl: 'https://media1.moneywise.com/a/27475/how-to-read-stock-charts_facebook_thumb_1200x628_v20230821170156.jpg',
+    link: '/DeepValueTrade'
   },
   {
-    title: 'Project Four',
-    description: 'Description for project three. The main focus is...',
-    imageUrl: 'https://via.placeholder.com/800x400',
-    link: 'https://example.com/project-three'
+    title: 'Vortex',
+    description: 'Deep meditation Vortex',
+    imageUrl: 'https://imageio.forbes.com/specials-images/imageserve/478975315/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds',
+    link: '/Vortex'
   },
   // Add more projects as needed
 ];
@@ -35,7 +35,7 @@ const ProjectCarousel = () => {
   return (
     <div className="container mt-5">
       <Carousel
-        additionalTransfrom={0}
+        // additionalTransfrom={0}
         arrows
         autoPlaySpeed={3000}
         centerMode={false}
@@ -89,7 +89,7 @@ const ProjectCarousel = () => {
         {projects.map((project, index) => (
           <div className='px-2' key={index}>
             <img
-              className="d-block w-100"
+              className="d-block w-100 img-thumbnail"
               src={project.imageUrl}
               alt={project.title}
             />

@@ -1,6 +1,6 @@
 import { useState, React, useRef } from 'react';
 import { BsGithub, BsLinkedin, BsCheck2 } from 'react-icons/bs'
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useEffect } from 'react';
 
