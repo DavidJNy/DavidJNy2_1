@@ -7,7 +7,7 @@ const socketIo = require('socket.io');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
 const io = socketIo(server);
 
