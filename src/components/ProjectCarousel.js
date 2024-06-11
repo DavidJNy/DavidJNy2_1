@@ -28,6 +28,12 @@ const projects = [
     imageUrl: 'https://imageio.forbes.com/specials-images/imageserve/478975315/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds',
     link: '/Vortex'
   },
+  {
+    title: 'Helena Ny Hair Dresser',
+    description: 'Hair dresser',
+    imageUrl: 'https://hairandsouldresser.com/wp-content/uploads/2020/12/idaho-springs-hairstylist-05.png',
+    link: 'https://hairandsouldresser.com/'
+  },
   // Add more projects as needed
 ];
 
@@ -35,7 +41,7 @@ const ProjectCarousel = () => {
   return (
     <div className="container mt-5">
       <Carousel
-        // additionalTransfrom={0}
+        additionalTransfrom={0}
         arrows
         autoPlaySpeed={3000}
         centerMode={false}
