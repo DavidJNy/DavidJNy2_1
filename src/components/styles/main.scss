@@ -99,6 +99,14 @@ nav {
     }
 }
 
+#Map {
+    height: 50vh;
+
+    MapContainer {
+        height: 50vh;
+    }
+}
+
 #Contact {
     letter-spacing: 0.15em;
     line-height: 2;
