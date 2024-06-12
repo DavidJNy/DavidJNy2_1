@@ -7,10 +7,9 @@ import ContactMe from './components/Contact.js';
 import YouLost from './components/YouLost.js';
 import Footer from './components/Footer.js';
 import ParkBuddy from './components/parkbuddy/mainParkBuddy.js'
-import DadJokes from './components/Dadjokes/mainDadJokes.js'
 import DeepValueTrade from './components/DeepValueTrades/mainDeepValueTrades.js'
 import Vortex from './components/Vortex/mainVortex.js'
-
+import Jokes from './components/jokes/mainjokes.js'
 import './components/styles/main.scss';
 
 function App() {
@@ -20,15 +19,15 @@ function App() {
         <div id="App">
         <NavigationBar/>
           <Routes>
-          <Route path="/" element={<Main/>}/>
-          <Route path="/About" element={<About/>}/>
-          <Route path="/Projects" element={<Projects/>}/>
-          <Route path="/Contact" element={<ContactMe/>}/>
-          <Route path="*" element={<YouLost/>}/>
-          <Route path="/ParkBuddy" element={<ParkBuddy/>}/>
-          <Route path="/DadJokes" element={<DadJokes/>}/>
-          <Route path="/DeepValueTrade" element={<DeepValueTrade/>}/>
-          <Route path="/Vortex" element={<Vortex/>}/>
+            <Route path="/" element={<Main/>}/>
+            <Route path="/About" element={<About/>}/>
+            <Route path="/Projects" element={<Projects/>}/>
+            <Route path="/Contact" element={<ContactMe/>}/>
+            <Route path="*" element={<YouLost/>}/>
+            <Route path="/ParkBuddy" element={<ParkBuddy/>}/>
+            <Route path="/DeepValueTrade" element={<DeepValueTrade/>}/>
+            <Route path="/Vortex" element={<Vortex/>}/>
+            <Route path="/Jokes" element={<Jokes />}/>
           </Routes>
         <Footer/>
         </div>

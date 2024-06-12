@@ -16,7 +16,7 @@ $enable-negative-margins: true;
 }
 
 @mixin backLight() {
-    box-shadow: 0px 0px 54px -4px rgba(255,255,255,0.7);
+    box-shadow: 0px 0px 54px -4px rgba(255, 255, 255, 0.7);
 }
 
 // Keyframes
@@ -25,6 +25,7 @@ $enable-negative-margins: true;
         transform: translateY(-100px);
         visibility: visible;
     }
+
     100% {
         transform: translate(0);
         visibility: visible;
@@ -45,6 +46,7 @@ nav {
     top: 0px;
     background-color: white;
     width: 100%;
+
     img {
         height: 35px;
     }
@@ -58,7 +60,9 @@ nav {
             padding-right: 1em;
             font-size: small;
             color: red;
-            &:focus, &:hover {
+
+            &:focus,
+            &:hover {
                 color: rgb(0, 0, 0);
             }
         }
@@ -70,16 +74,21 @@ nav {
 }
 
 // Main Section
-#Main, #About, #Projects, #Contact {
+#Main,
+#About,
+#Projects,
+#Contact {
     @include baseline;
 }
 
 #Main {
     img {}
 
-    h1, h2, h3, h4, h5 {
-    
-    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {}
 
     .RotatingGlobe {
         overflow: hidden;
@@ -94,8 +103,14 @@ nav {
 }
 
 #Projects {
-    div p {
-        
+    div p {}
+}
+
+#Map {
+    height: 50vh;
+
+    MapContainer {
+        height: 50vh;
     }
 }
 
@@ -107,6 +122,7 @@ nav {
         color: white;
         transition: 0.5s;
         transition-property: transform;
+
         &:hover {
             color: red;
             transform: scale(1.5);
@@ -130,11 +146,12 @@ nav {
         @include logo;
     }
 
-    div > a {
+    div>a {
         color: rgb(0, 0, 0);
         transition: 0.5s;
         transition-property: transform;
         letter-spacing: 0.2em;
+
         &:hover {
             color: red;
             transform: scale(1.5);
@@ -161,10 +178,12 @@ nav {
         img {
             margin-left: 10px;
         }
+
         .nav-link {
             margin-left: 0 !important;
         }
     }
+
     .navbar-toggler {
         padding: 0.25rem 0.5rem;
         font-size: 0.875rem;
@@ -183,10 +202,10 @@ nav {
 @media (min-width: 1200px) {}
 
 // Z-Index Variables
-$zindex-dropdown:          1000 !default;
-$zindex-sticky:            1020 !default;
-$zindex-fixed:             1030 !default;
-$zindex-modal-backdrop:    1040 !default;
-$zindex-modal:             1050 !default;
-$zindex-popover:           1060 !default;
-$zindex-tooltip:           1070 !default;
+$zindex-dropdown: 1000 !default;
+$zindex-sticky: 1020 !default;
+$zindex-fixed: 1030 !default;
+$zindex-modal-backdrop: 1040 !default;
+$zindex-modal: 1050 !default;
+$zindex-popover: 1060 !default;
+$zindex-tooltip: 1070 !default;

@@ -21,15 +21,15 @@ function CNorris() {
     }
 
         return (
-            <div class="container p-3 mb-2 bg-dark text-light" >
-                <hr class="solid"></hr>
-                <div class='row p-3' >
-                    <h4 class='col-sm pt-2 p'>Random Chuck Norris Quotes: </h4>
-                    <button class="btn btn-primary col-sm py2" type="button" onClick={fetchFacts}>Click here for funny Chuck Norris facts</button>
+            <div className="container p-3 mb-2 bg-dark text-light" >
+                <hr className="solid"></hr>
+                <div className='row p-3' >
+                    <h4 className='col-sm pt-2 p'>Random Chuck Norris Quotes: </h4>
+                    <button className="btn btn-primary col-sm py2" type="button" onClick={fetchFacts}>Click here for funny Chuck Norris facts</button>
                 </div>
-            <span>{data}</span>
-            <hr class="solid"></hr>
-        </div>
+                <span>{data}</span>
+                <hr className="solid"></hr>
+            </div>
     )
 }
 

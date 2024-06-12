@@ -14,7 +14,7 @@ const projects = [
     title: 'Dad Jokes',
     description: 'Want some quick dad jokes?',
     imageUrl: 'https://s3-prod.adage.com/s3fs-public/20230109_Progressive-Insurance_TV-Dad-Braces_3X2.jpg',
-    link: '/DadJokes'
+    link: '/Jokes'
   },
   {
     title: 'Deep Value Trades',
