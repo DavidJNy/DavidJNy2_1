@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MapApp from './Map';
 import Chat from './Chat';
+import Login from './Login'
 
 
 function MainPark() {
@@ -13,7 +14,7 @@ function MainPark() {
                 <MapApp />
             </div>
             <div className='chatrooms'>
-                {/* {!token ? <Login setToken={setToken} /> : <Chat token={token} />} */}
+                {!token ? <Login setToken={setToken} /> : <Chat token={token} />}
             </div>
         </div>
     );

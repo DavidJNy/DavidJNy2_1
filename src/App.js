@@ -7,7 +7,7 @@ import ContactMe from './components/Contact.js';
 import YouLost from './components/YouLost.js';
 import Footer from './components/Footer.js';
 import ParkBuddy from './components/parkbuddy/mainParkBuddy.js'
-import DeepValueTrade from './components/DeepValueTrades/mainDeepValueTrades.js'
+import DeepValueTrade from './components/deepValueTrades/mainDeepValueTrades.js'
 import Vortex from './components/Vortex/mainVortex.js'
 import Jokes from './components/jokes/mainjokes.js'
 import './components/styles/main.scss';
