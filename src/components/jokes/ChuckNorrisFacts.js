@@ -21,7 +21,7 @@ function CNorris() {
     }
 
         return (
-            <div className="container p-3 mb-2 bg-dark text-light" >
+            <div className=" p-3 mb-2v text-light container col-10" >
                 <hr className="solid"></hr>
                 <div className='row p-3' >
                     <h4 className='col-sm pt-2 p'>Random Chuck Norris Quotes: </h4>
