@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import JokesModal from './alljokemodal'
 
 const DadJokes = () => {
     const [randomJoke, setRandomJoke] = useState(null);
     const [newJoke, setNewJoke] = useState('');
+    const [showModal, setShowModal] = useState(false);
+
+    const handleShowModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
 
     const fetchRandomJoke = () => {
         fetch('/api/jokes/random')
@@ -30,22 +35,29 @@ const DadJokes = () => {
             })
             .catch(error => console.error('Error adding joke:', error));
     };
+    
 
     return (
         <div className='container col-10'>
-            {randomJoke && <p>{randomJoke}</p>}
             <div className="container p-3 mb-2 text-light">
                 <hr className="solid" />
                 <div className='row p-3'>
                     <h4 className='col-sm pt-2'>Random Dad Jokes: </h4>
                     <button className="btn btn-primary col-sm py2" type="button" onClick={fetchRandomJoke}>Click here for a random dad joke</button>
                 </div>
+                {randomJoke && <p>{randomJoke}</p>}
                 <hr className="solid" />
             </div>
+            <div className='container p-4'>
+                <button className="btn btn-secondary" onClick={handleShowModal}>
+                Show All Jokes
+                </button>
+             </div>
+         <JokesModal show={showModal} handleClose={handleCloseModal} />
             <div className='container col-10'>
                 <h4 className='text-light'>Want to enter a dad joke?</h4>
                 <form onSubmit={handleAddJoke}>
-                    <div className="form-group">
+                    <div className="form-group p-2">
                         <input
                             type="text"
                             className="form-control"
