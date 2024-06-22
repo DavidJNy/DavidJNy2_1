@@ -1,27 +1,76 @@
-import React, { useState } from 'react';
+// LoginForm.js
 
-function MainLogin  ({ setToken }) {
-    
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+import React, { useState } from "react";
+import axios from "axios";
+import { Button, Modal } from "react-bootstrap";
+import RegisterForm from "./registerform";
 
-    const login = async () => {
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password }),
-        });
-        const data = await response.json();
-        setToken(data.token);
-    };
+const LoginForm = ({ onLogin }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
 
-    return (
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("/api/login", { username, password });
+      console.log(response.data);
+      // Redirect to chatroom upon successful login
+      // Call the onLogin function passed from App.js to update the login state
+      onLogin();
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("Invalid username or password");
+    }
+  };
+
+  const handleRegisterClick = () => {
+    setShowRegisterModal(true);
+  };
+
+  const handleCloseRegisterModal = () => {
+    setShowRegisterModal(false);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleLoginSubmit}>
+        <h2>Login</h2>
+        {error && <p>{error}</p>}
         <div>
-            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={login}>Login</button>
+          <label>Username:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
-    );
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit">Login</button>
+        <Button variant="link" onClick={handleRegisterClick}>
+          Register
+        </Button>
+      </form>
+
+      <Modal show={showRegisterModal} onHide={handleCloseRegisterModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Register</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <RegisterForm onClose={handleCloseRegisterModal} />
+        </Modal.Body>
+      </Modal>
+    </div>
+  );
 };
 
-export default MainLogin;
+export default LoginForm;

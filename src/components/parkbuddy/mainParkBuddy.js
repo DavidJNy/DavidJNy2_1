@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import MapApp from './Map';
-import Chat from './Chat';
-import Login from './Login'
-
+import MapApp from "./Map";
+import Chatroom from "./Chatroom";
+import LoginForm from "./Login";
 
 function MainPark() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const [token, setToken] = useState(null);
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
 
-    return (
-        <div id='Main' className='justify-content-center container'>
-            <div className='map'>
-                <MapApp />
-            </div>
-            <div className='chatrooms'>
-                {!token ? <Login setToken={setToken} /> : <Chat token={token} />}
-            </div>
-        </div>
-    );
+  return (
+    <div id="Main" className="justify-content-center container">
+      <div className="map">
+        <MapApp />
+      </div>
+      {isLoggedIn ? <Chatroom /> : <LoginForm onLogin={handleLogin} />}
+    </div>
+  );
 }
 
 export default MainPark;

@@ -82,13 +82,6 @@ nav {
 }
 
 #Main {
-    img {}
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {}
 
     .RotatingGlobe {
         overflow: hidden;
@@ -107,11 +100,11 @@ nav {
 }
 
 #Map {
-    height: 50vh;
-
-    MapContainer {
-        height: 50vh;
-    }
+    
+    
+    .map-container {
+        height: 400px;
+}
 }
 
 #Map {

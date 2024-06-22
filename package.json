@@ -15,6 +15,7 @@
     "@react-three/fiber": "^8.16.6",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/three": "^0.164.0",
+    "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.3",
@@ -79,7 +80,7 @@
     "@babel/plugin-transform-optional-chaining": "^7.24.7",
     "@babel/plugin-transform-private-methods": "^7.24.7",
     "@babel/plugin-transform-private-property-in-object": "^7.24.7",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.23.1",
     "react-scripts": "^5.0.1",
     "sass": "^1.54.0",
     "sass-loader": "^13.0.2",
@@ -88,5 +89,5 @@
   "overrides": {
     "nth-check": "$nth-check"
   },
-  "proxy": "http://localhost:3000"
+  "proxy": "http://localhost:5000"
 }
