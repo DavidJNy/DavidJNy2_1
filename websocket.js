@@ -1,32 +1,55 @@
-const http = require('http');
-const socketIo = require('socket.io');
+const WebSocket = require("ws");
+const express = require("express");
+const http = require("http");
 
-const server = http.createServer();
-const io = socketIo(server, {
-  cors: {
-    origin: "*",
-  }
-});
+// Set up the express app
+const app = express();
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
 
-io.on('connection', socket => {
-  console.log('Client connected');
+// Store connected clients
+const clients = new Map();
 
-  // Send a welcome message to the client
-  socket.emit('message', 'Welcome to the Socket.IO server!');
-
-  // Handle incoming messages from clients
-  socket.on('message', message => {
-    console.log(`Received: ${message}`);
-    // Echo the message back to the client
-    socket.emit('message', `Server received: ${message}`);
+wss.on("connection", (ws) => {
+  ws.on("message", (message) => {
+    const data = JSON.parse(message);
+    switch (data.type) {
+      case "new_user":
+        clients.set(ws, data.username);
+        broadcast(
+          JSON.stringify({ type: "users", users: Array.from(clients.values()) })
+        );
+        break;
+      case "message":
+        broadcast(
+          JSON.stringify({
+            type: "message",
+            username: data.username,
+            message: data.message,
+          })
+        );
+        break;
+      default:
+    }
   });
 
-  // Handle client disconnection
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
+  ws.on("close", () => {
+    clients.delete(ws);
+    broadcast(
+      JSON.stringify({ type: "users", users: Array.from(clients.values()) })
+    );
   });
 });
 
-server.listen(3001, () => {
-  console.log('Socket.IO server is running on http://localhost:3001');
+function broadcast(data) {
+  clients.forEach((_, client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(data);
+    }
+  });
+}
+
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

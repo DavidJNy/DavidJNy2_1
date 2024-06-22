@@ -1,9 +1,7 @@
-// LoginForm.js
-
 import React, { useState } from "react";
 import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
-import RegisterForm from "./registerform";
+import RegisterForm from "./RegisterForm";
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -17,9 +15,7 @@ const LoginForm = ({ onLogin }) => {
     try {
       const response = await axios.post("/api/login", { username, password });
       console.log(response.data);
-      // Redirect to chatroom upon successful login
-      // Call the onLogin function passed from App.js to update the login state
-      onLogin();
+      onLogin(username);
     } catch (error) {
       console.error("Login error:", error);
       setError("Invalid username or password");

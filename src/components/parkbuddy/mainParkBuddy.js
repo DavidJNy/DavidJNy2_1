@@ -5,8 +5,10 @@ import LoginForm from "./Login";
 
 function MainPark() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [username, setUsername] = useState("");
+  
   const handleLogin = () => {
+    setUsername(username);
     setIsLoggedIn(true);
   };
 
@@ -15,7 +17,7 @@ function MainPark() {
       <div className="map">
         <MapApp />
       </div>
-      {isLoggedIn ? <Chatroom /> : <LoginForm onLogin={handleLogin} />}
+      {isLoggedIn ? <Chatroom username={username}/> : <LoginForm onLogin={handleLogin} />}
     </div>
   );
 }
