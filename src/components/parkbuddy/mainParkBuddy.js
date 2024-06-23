@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MapApp from "./Map";
-import Chatroom from "./Chatroom";
+import ChatContainer from "./ChatContainer";
 import LoginForm from "./Login";
 
 function MainPark() {
@@ -17,7 +17,7 @@ function MainPark() {
       <div className="map">
         <MapApp />
       </div>
-      {isLoggedIn ? <Chatroom username={username}/> : <LoginForm onLogin={handleLogin} />}
+      {isLoggedIn ? <ChatContainer username={username}/> : <LoginForm onLogin={handleLogin} />}
     </div>
   );
 }
