@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const bodyParser = require("body-parser");
 const sqlite3 = require("sqlite3").verbose();
@@ -9,10 +8,22 @@ const { Server } = require("socket.io");
 const app = express();
 const port = 3005;
 
-app.use(bodyParser.json());
-app.use(cors());
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3500", // Allow requests from this origin
+    methods: ["GET", "POST"],
+  },
+});
 
-const db = new sqlite3.Database(":memory:"); // Or specify a file to persist data
+app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "http://localhost:3500", // Allow requests from this origin
+  })
+);
+
+const db = new sqlite3.Database(":memory:");
 
 // Initialize database
 db.serialize(() => {
@@ -69,14 +80,6 @@ app.post("/api/chatrooms/:id/messages", (req, res) => {
   );
 });
 
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3006",
-    methods: ["GET", "POST"],
-  },
-});
-
 io.on("connection", (socket) => {
   console.log("A user connected");
 
@@ -113,5 +116,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`WebSocketServer running on http://localhost:${port}`);
 });

@@ -94,5 +94,5 @@
   "overrides": {
     "nth-check": "$nth-check"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:3005"
 }

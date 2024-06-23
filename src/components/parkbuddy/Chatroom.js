@@ -1,65 +1,58 @@
 import React, { useEffect, useState, useRef } from "react";
+import { io } from "socket.io-client";
 
-const Chatroom = ({ username }) => {
+const Chatroom = ({ chatroomId, username }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [users, setUsers] = useState([]);
   const ws = useRef(null);
 
   useEffect(() => {
-    ws.current = new WebSocket("ws://localhost:3001");
+    ws.current = io("http://localhost:3005"); // Correct the URL to match the server
 
-    ws.current.onopen = () => {
-      ws.current.send(JSON.stringify({ type: "new_user", username }));
-    };
+    ws.current.on("connect", () => {
+      console.log("Connected to WebSocket server");
+      ws.current.emit("joinRoom", chatroomId);
+    });
 
-    ws.current.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      switch (data.type) {
-        case "message":
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { username: data.username, message: data.message },
-          ]);
-          break;
-        case "users":
-          setUsers(data.users);
-          break;
-        default:
-          break;
-      }
-    };
+    ws.current.on("message", (newMessage) => {
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
+    });
+
+    ws.current.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+
+    ws.current.on("connect_error", (error) => {
+      console.error("WebSocket connection error:", error);
+    });
 
     return () => {
-      ws.current.close();
+      ws.current.disconnect();
     };
-  }, [username]);
+  }, [chatroomId, username]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    ws.current.send(
-      JSON.stringify({ type: "message", username, message: input })
-    );
-    setInput("");
+    if (input.trim()) {
+      const message = {
+        chatroomId,
+        sender: username,
+        text: input,
+      };
+      ws.current.emit("chatMessage", message);
+      setInput("");
+    }
   };
 
   return (
     <div>
       <h2>Chatroom</h2>
       <div>
-        <h3>Users</h3>
-        <ul>
-          {users.map((user, index) => (
-            <li key={index}>{user}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
         <h3>Messages</h3>
         <ul>
           {messages.map((msg, index) => (
             <li key={index}>
-              <strong>{msg.username}:</strong> {msg.message}
+              <strong>{msg.sender}:</strong> {msg.text}
             </li>
           ))}
         </ul>
