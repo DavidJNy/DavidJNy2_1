@@ -1,5 +1,3 @@
-// Chatroom.js
-
 import React, { useEffect, useState, useRef } from "react";
 
 const Chatroom = ({ username }) => {
