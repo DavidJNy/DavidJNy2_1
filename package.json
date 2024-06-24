@@ -56,7 +56,7 @@
     "server": "node server.js",
     "loginserver": "node loginserver.js",
     "websocket": "node websocket.js",
-    "dev": "concurrently \"nodemon server\" \"nodemon loginserver\" \"nodemon websocket\" \"npm start\""
+    "dev": "concurrently \"nodemon server\" \"npm start\""
   },
   "eslintConfig": {
     "extends": [
@@ -94,5 +94,5 @@
   "overrides": {
     "nth-check": "$nth-check"
   },
-  "proxy": "http://localhost:3005"
+  "proxy": "http://localhost:3001"
 }

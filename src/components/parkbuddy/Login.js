@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
-import RegisterForm from "./RegisterForm";
+import RegisterForm from "./RegisterForm.js";
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -13,7 +13,7 @@ const LoginForm = ({ onLogin }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/api/login", { username, password });
+      const response = await axios.post("/api/auth/login", { username, password });
       console.log(response.data);
       onLogin(username);
     } catch (error) {

@@ -10,7 +10,7 @@ const RegisterForm = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/api/register", {
+      const response = await axios.post("/api/auth/register", {
         username,
         password,
       });
@@ -19,9 +19,12 @@ const RegisterForm = ({ onClose }) => {
       onClose();
     } catch (error) {
       console.error("Registration error:", error);
-      setError("Failed to register user");
-    }
-  };
+      if (error.response && error.response.status === 409) {
+        setError("Username already exists. Please choose a different username.");
+      } else {
+        setError("Failed to register user. Please try again later.");
+      }
+  }};
 
   return (
     <form onSubmit={handleSubmit}>

@@ -7,21 +7,25 @@ const Chatroom = ({ chatroomId, username }) => {
   const ws = useRef(null);
 
   useEffect(() => {
-    ws.current = io("http://localhost:3005"); // Correct the URL to match the server
+    ws.current = io("http://localhost:3001");
 
+    // Connect to WebSocket and join the chatroom
     ws.current.on("connect", () => {
       console.log("Connected to WebSocket server");
       ws.current.emit("joinRoom", chatroomId);
     });
 
+    // Handle incoming messages
     ws.current.on("message", (newMessage) => {
       setMessages((prevMessages) => [...prevMessages, newMessage]);
     });
 
+    // Handle disconnection
     ws.current.on("disconnect", () => {
       console.log("Disconnected from WebSocket server");
     });
 
+    // Handle connection error
     ws.current.on("connect_error", (error) => {
       console.error("WebSocket connection error:", error);
     });
@@ -50,11 +54,13 @@ const Chatroom = ({ chatroomId, username }) => {
       <div>
         <h3>Messages</h3>
         <ul>
-          {messages.map((msg, index) => (
-            <li key={index}>
-              <strong>{msg.sender}:</strong> {msg.text}
-            </li>
-          ))}
+          {messages
+            .filter((msg) => msg.chatroom_id === chatroomId) // Filter messages for the current chatroom
+            .map((msg, index) => (
+              <li key={index}>
+                <strong>{msg.sender}:</strong> {msg.text}
+              </li>
+            ))}
         </ul>
       </div>
       <form onSubmit={handleSubmit}>

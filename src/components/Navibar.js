@@ -8,14 +8,14 @@ import { CgFormatJustify }from 'react-icons/cg';
 
 function NavigationBar() {
 
-    const [viewportContent, setViewportContent] = useState('David Ny');
+    const [viewportContent, setViewportContent] = useState('David N');
 
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth < 768) {
-        setViewportContent('D.Ny');
+        setViewportContent('D.N');
       } else {
-        setViewportContent('David Ny');
+        setViewportContent('David N');
       }
     }
 

@@ -8,14 +8,14 @@ import { BsFacebook, BsInstagram, BsLinkedin } from "react-icons/bs";
 
 function Footer() {
 
-    const [viewportContent, setViewportContent] = useState('David Ny');
+    const [viewportContent, setViewportContent] = useState('David N');
 
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth < 370) {
-        setViewportContent('D. Ny');
+        setViewportContent('D. N');
       } else {
-        setViewportContent('David Ny');
+        setViewportContent('David N');
       }
     }
 
@@ -46,7 +46,7 @@ function Footer() {
                     <img alt="logo" src={ChiliLogo2} id="clogo" className="mx-2 justify-content-center" />
                     <h2 className="d-flex text-center" >{viewportContent}</h2>
                 </div>
-                <div className="d-flex text-center AllRights justify-content-center" >© 2024 David J . All rights reserved.</div>
+                <div className="d-flex text-center AllRights justify-content-center" >© 2024 David N. All rights reserved.</div>
                 {/* <div className='container justify-content-center d-sm-block d-md-flex'>
                     {/* Add quick 3 pages for these links & remove disableLink class
                     <Link className='d-flex justify-content-center m-2 badge px-5 disableLink' to="/Privacy_Notice">Privacy Notice</Link>
