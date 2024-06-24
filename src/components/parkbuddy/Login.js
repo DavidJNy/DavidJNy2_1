@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
-import RegisterForm from "./registerform";
+import RegisterForm from "./registerer";
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
