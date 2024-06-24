@@ -7,7 +7,7 @@ const Chatroom = ({ chatroomId, username }) => {
   const ws = useRef(null);
 
   useEffect(() => {
-    ws.current = io("http://localhost:3001");
+    ws.current = io("https://www.davidjny.com");
 
     // Connect to WebSocket and join the chatroom
     ws.current.on("connect", () => {

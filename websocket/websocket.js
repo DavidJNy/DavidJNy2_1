@@ -4,10 +4,12 @@ const db = require("../config/db"); // Assuming this file handles database initi
 function setupWebSocket(server) {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:3500", // Adjust the origin based on your frontend application's URL
-      methods: ["GET", "POST"],
-    },
-  });
+        origin: "https://www.davidjny.com",
+        methods: ["GET", "POST"],
+        allowedHeaders: ["Origin", "Content-Type", "Accept", "Authorization"],
+        credentials: true
+    }
+});
 
   io.on("connection", (socket) => {
     console.log("A user connected");

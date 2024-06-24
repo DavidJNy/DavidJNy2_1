@@ -16,7 +16,10 @@ const server = http.createServer(app);
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "https://localhost:3001",
+      origin: "https://www.davidjny.com",
+      methods: ["GET", "POST"],
+      allowedHeaders: ["Origin", "Content-Type", "Accept", "Authorization"],
+      credentials: true
   })
 );
 
