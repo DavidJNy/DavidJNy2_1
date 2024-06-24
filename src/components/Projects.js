@@ -5,16 +5,16 @@ import ProjectCarousel from './ProjectCarousel';
 function Projects() {
 
     return (
-        <div id="Projects" class="container">
+        <div id="Projects" className="container">
             <div class='container'>
-                <h1 class='display-1 p-3 text-center'>
+                <h1 className='display-1 p-3 text-center'>
                     Apps and projects
                 </h1>
-                <p class='text-center'>
+                <p className='text-center'>
                     Here is a list of my active/prospective projects.
                 </p>
             </div>
-            <div class="project_container">
+            <div className="project_container">
                 <ProjectCarousel />
             </div>
         </div>
