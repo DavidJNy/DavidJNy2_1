@@ -1,8 +1,3 @@
-# Serve static files
-
-server_path="/home/Documents/DavidJNy2_1/server/"
-file_path="/home/Documents/DavidJNy2_1/server/server.js"
-file_path_websocket="/home/Documents/DavidJNy2_1/server/websocket.js"
 
 echo "Pulling from main"
 git pull
