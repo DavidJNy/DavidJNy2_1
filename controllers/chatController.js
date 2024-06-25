@@ -3,7 +3,7 @@ const db = require("../config/db");
 exports.messages = (req, res) => {
   const { chatroomId } = req.params;
   db.all(
-    "SELECT * FROM messages WH ERE chatroom_id = ? ORDER BY timestamp ASC",
+    "SELECT * FROM messages WHERE chatroom_id = ? ORDER BY timestamp ASC",
     [chatroomId],
     (err, rows) => {
       if (err) {
