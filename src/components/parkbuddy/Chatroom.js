@@ -8,6 +8,7 @@ const Chatroom = ({ chatroomId, username }) => {
 
   useEffect(() => {
     ws.current = io("https://www.davidjny.com");
+    // ws.current = io("http://localhost:3001");
 
     // Connect to WebSocket and join the chatroom
     ws.current.on("connect", () => {
@@ -30,6 +31,15 @@ const Chatroom = ({ chatroomId, username }) => {
       console.error("WebSocket connection error:", error);
     });
 
+    fetch(`/api/chat/${chatroomId}/messages`)
+      .then((response) => response.json())
+      .then((data) => {
+        setMessages(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching messages:", error);
+      });
+
     return () => {
       ws.current.disconnect();
     };
@@ -50,7 +60,7 @@ const Chatroom = ({ chatroomId, username }) => {
 
   return (
     <div>
-      <h2>Chatroom</h2>
+      <h2>Chatroom {chatroomId}</h2>
       <div>
         <h3>Messages</h3>
         <ul>
