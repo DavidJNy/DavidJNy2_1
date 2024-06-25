@@ -46,8 +46,8 @@ function MapApp({onChatroomSelect}) {
     },
   ];
 
-  const handleChatroomSelect = (chatroomId) => {
-    onChatroomSelect(chatroomId);
+  const handleChatroomSelect = (chatroomId, chatroomName) => {
+    onChatroomSelect(chatroomId, chatroomName);
   };
 
   return (
@@ -65,7 +65,7 @@ function MapApp({onChatroomSelect}) {
         {locations.map((location, index) => (
           <Marker key={index} position={location.position}>
             <Popup>
-              <Link onClick={() => handleChatroomSelect(location.id)}>
+              <Link onClick={() => handleChatroomSelect(location.id, location.name)}>
                 {location.name}
               </Link>
             </Popup>

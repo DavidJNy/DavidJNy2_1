@@ -7,14 +7,16 @@ function MainPark() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [selectedChatroomId, setSelectedChatroomId] = useState(null);
+  const [selectedChatroomName, setSelectedChatroomName] = useState(null);
 
   const handleLogin = (username) => {
     setUsername(username);
     setIsLoggedIn(true);
   };
 
-  const handleChatroomSelect = (chatroomId) => {
+  const handleChatroomSelect = (chatroomId, chatroomName) => {
     setSelectedChatroomId(chatroomId);
+    setSelectedChatroomName(chatroomName);
   };
 
   
@@ -27,6 +29,7 @@ function MainPark() {
         <ChatContainer
           username={username}
           chatroomId={selectedChatroomId} // Pass the selected chatroom ID
+          roomName={selectedChatroomName}
         />
       ) : (
         <LoginForm onLogin={handleLogin} />

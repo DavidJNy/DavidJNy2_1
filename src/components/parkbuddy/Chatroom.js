@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 
-const Chatroom = ({ chatroomId, username }) => {
+const Chatroom = ({ chatroomId, username, roomName }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const ws = useRef(null);
@@ -60,7 +60,9 @@ const Chatroom = ({ chatroomId, username }) => {
 
   return (
     <div>
-      <h2>Chatroom {chatroomId}</h2>
+      <h2>
+        {roomName} Chatroom # {chatroomId}
+      </h2>
       <div>
         <h3>Messages</h3>
         <ul>
