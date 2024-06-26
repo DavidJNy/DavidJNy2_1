@@ -8,7 +8,6 @@ const jokeRoutes = require("./routes/jokeRoutes");
 const authRoutes = require("./routes/authRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const setupWebSocket = require("./websocket/websocket");
-require("dotenv").config();
 
 const PORT = 3001;
 
