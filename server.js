@@ -8,7 +8,9 @@ const jokeRoutes = require("./routes/jokeRoutes");
 const authRoutes = require("./routes/authRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const setupWebSocket = require("./websocket/websocket");
-const PORT = process.env.PORT || 3001;
+require("dotenv").config();
+
+const PORT = 3001;
 
 const app = express();
 const server = http.createServer(app);
@@ -18,7 +20,7 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: "https://www.davidjny.com",
-    // origin: "http://localhost:3500",
+    // origin: "http://localhost:3000",
     methods: ["GET", "POST"],
     allowedHeaders: ["Origin", "Content-Type", "Accept", "Authorization"],
     credentials: true,

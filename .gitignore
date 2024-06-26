@@ -30,3 +30,5 @@ apikeys.env
 # db
 jokes.db
 database.sqlite
+
+.env

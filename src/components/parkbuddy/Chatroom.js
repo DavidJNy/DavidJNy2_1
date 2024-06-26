@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
+import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
 
 const Chatroom = ({ chatroomId, username, roomName }) => {
   const [messages, setMessages] = useState([]);
@@ -7,8 +8,8 @@ const Chatroom = ({ chatroomId, username, roomName }) => {
   const ws = useRef(null);
 
   useEffect(() => {
-    ws.current = io("https://www.davidjny.com");
-    // ws.current = io("http://localhost:3001");
+    // ws.current = io("https://www.davidjny.com");
+    ws.current = io("http://localhost:3001");
 
     // Connect to WebSocket and join the chatroom
     ws.current.on("connect", () => {
@@ -59,32 +60,37 @@ const Chatroom = ({ chatroomId, username, roomName }) => {
   };
 
   return (
-    <div>
-      <h2>
-        {roomName} Chatroom # {chatroomId}
-      </h2>
-      <div>
-        <h3>Messages</h3>
-        <ul>
-          {messages
-            .filter((msg) => msg.chatroom_id === chatroomId) // Filter messages for the current chatroom
-            .map((msg, index) => (
-              <li key={index}>
-                <strong>{msg.sender}:</strong> {msg.text}
-              </li>
-            ))}
-        </ul>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type a message"
-        />
-        <button type="submit">Send</button>
-      </form>
-    </div>
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col md={8}>
+          <h2 className="text-center">Chatroom: {roomName}</h2>
+          <div className="chat-messages">
+            <div>
+              {messages
+                .filter((msg) => msg.chatroom_id === chatroomId) // Filter messages for the current chatroom
+                .map((msg, index) => (
+                  <ListGroup.Item key={index}>
+                    <strong>{msg.sender}:</strong> {msg.text}
+                  </ListGroup.Item>
+                ))}
+            </div>
+          </div>
+          <Form onSubmit={handleSubmit} className="mt-3">
+            <Form.Group controlId="messageInput">
+              <Form.Control
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type a message"
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit" className="mt-2">
+              Send
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
