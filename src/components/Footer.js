@@ -8,14 +8,14 @@ import { BsFacebook, BsInstagram, BsLinkedin } from "react-icons/bs";
 
 function Footer() {
 
-    const [viewportContent, setViewportContent] = useState('David N');
+    const [viewportContent, setViewportContent] = useState('David Ny');
 
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth < 370) {
-        setViewportContent('D. N');
+        setViewportContent('D. Ny');
       } else {
-        setViewportContent('David N');
+        setViewportContent('David Ny');
       }
     }
 
