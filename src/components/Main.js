@@ -1,6 +1,6 @@
 import React from 'react';
 import RotatingGlobe from './RotatingGlobe.js';
-import MainPrickTox from "./MainPrickTox.js";
+// import MainPrickTox from "./MainPrickTox.js";
 
 
 function Main() {
@@ -15,7 +15,7 @@ function Main() {
                     <div className='RotatingGlobe justify-content-center '>
                       <RotatingGlobe />
                     </div>
-                    <MainPrickTox/>
+                    {/* <MainPrickTox/> */}
                 </div>
             </div>
         </>

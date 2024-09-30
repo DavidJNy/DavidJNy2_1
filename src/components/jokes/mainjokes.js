@@ -6,10 +6,11 @@ import DadJokes from './mainDadJokes.js'
 function Mainjokes() {
 
     return (
-        <div id="mainJokes" className='justify-content-center container p-3'>
-            <ChuckNorris/>
-            <DadJokes/>
-        </div>
+      <div id="mainJokes" className="justify-content-center container p-3">
+        <ChuckNorris />
+        <DadJokes />
+        
+      </div>
     );
 }
 
