@@ -1,18 +1,18 @@
-@import './custom.scss';
+@import '~bootstrap/scss/bootstrap'; // Import Bootstrap
 
 // Variables
 $enable-negative-margins: true;
 
 // Mixins
 @mixin baseline() {
-    color: #fff;
+    color: $white;
     block-size: fit-content;
     min-height: 100vh;
 }
 
 @mixin logo() {
     font-size: xx-large;
-    color: red;
+    color: $white; // Use Bootstrap's primary color
 }
 
 @mixin backLight() {
@@ -35,7 +35,7 @@ $enable-negative-margins: true;
 // Global Styles
 
 #App {
-    background-color: rgb(61, 61, 61);
+    background-color: $dark; // Use Bootstrap's dark color
     width: 100%;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -44,7 +44,7 @@ $enable-negative-margins: true;
 nav {
     position: sticky;
     top: 0px;
-    background-color: white;
+    background-color: $dark;
     width: 100%;
 
     img {
@@ -59,11 +59,11 @@ nav {
         .nav-link {
             padding-right: 1em;
             font-size: small;
-            color: red;
+            color: $white; // Use Bootstrap's danger color
 
             &:focus,
             &:hover {
-                color: rgb(0, 0, 0);
+                color: $red; // Use Bootstrap's success color
             }
         }
 
@@ -82,7 +82,6 @@ nav {
 }
 
 #Main {
-
     .RotatingGlobe {
         overflow: hidden;
         height: 50vh;
@@ -100,11 +99,9 @@ nav {
 }
 
 #Map {
-    
-    
     .map-container {
         height: 400px;
-}
+    }
 }
 
 #Contact {
@@ -112,12 +109,12 @@ nav {
     line-height: 2;
 
     a {
-        color: white;
+        color: $white;
         transition: 0.5s;
         transition-property: transform;
 
         &:hover {
-            color: red;
+            color: $warning; // Use Bootstrap's warning color
             transform: scale(1.5);
         }
     }
@@ -133,7 +130,7 @@ nav {
 }
 
 #Footer {
-    background-color: rgb(255, 255, 255);
+    background-color: $dark;
 
     img {
         height: 35px;
@@ -143,14 +140,14 @@ nav {
         @include logo;
     }
 
-    div>a {
-        color: rgb(0, 0, 0);
+    div > a {
+        color: $white;
         transition: 0.5s;
         transition-property: transform;
         letter-spacing: 0.2em;
 
         &:hover {
-            color: red;
+            color: $red; // Use Bootstrap's info color
             transform: scale(1.5);
         }
     }
@@ -160,11 +157,11 @@ nav {
     }
 
     .AllRights {
-        color: black;
+        color: $white;
     }
 
     .hack {
-        border: 1px solid black;
+        border: 1px solid $white;
     }
 }
 

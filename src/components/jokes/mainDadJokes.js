@@ -38,39 +38,52 @@ const DadJokes = () => {
     
 
     return (
-        <div className='container col-10'>
-            <div className="container p-3 mb-2 text-light">
-                <hr className="solid" />
-                <div className='row p-3'>
-                    <h4 className='col-sm pt-2'>Random Dad Jokes: </h4>
-                    <button className="btn btn-primary col-sm py2" type="button" onClick={fetchRandomJoke}>Click here for a random dad joke</button>
+      <div className="m-4">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-md-4 mb-3">
+              <button
+                className="btn btn-danger w-100"
+                type="button"
+                onClick={fetchRandomJoke}
+              >
+                {randomJoke === null
+                  ? "Click here for funny Dad Jokes"
+                  : "More Dad Jokes"}
+              </button>
+            </div>
+            {randomJoke ? (
+              <div className="col-md-6 mb-3">
+                <div className="p-3 border h-100 card">
+                  <span>{randomJoke || "No Chuck Norris fact yet."}</span>
                 </div>
-                {randomJoke && <p>{randomJoke}</p>}
-                <hr className="solid" />
-            </div>
-            <div className='container p-4'>
-                <button className="btn btn-secondary" onClick={handleShowModal}>
-                Show All Jokes
-                </button>
-             </div>
-         <JokesModal show={showModal} handleClose={handleCloseModal} />
-            <div className='container col-10'>
-                <h4 className='text-light'>Want to enter a dad joke?</h4>
-                <form onSubmit={handleAddJoke}>
-                    <div className="form-group p-2">
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={newJoke}
-                            onChange={(e) => setNewJoke(e.target.value)}
-                            placeholder="Enter your dad joke"
-                            required
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-primary">Add Joke</button>
-                </form>
-            </div>
+              </div>
+            ) : null}
         </div>
+        <div className="">
+          <button className="btn btn-secondary" onClick={handleShowModal}>
+            Show All Jokes
+          </button>
+        </div>
+        <JokesModal show={showModal} handleClose={handleCloseModal} />
+        <div className="mt-4 ">
+          <h4 className="text-light">Want to enter a dad joke?</h4>
+          <form onSubmit={handleAddJoke}>
+            <div className="form-group col-sm-6">
+              <input
+                type="text"
+                className="form-control"
+                value={newJoke}
+                onChange={(e) => setNewJoke(e.target.value)}
+                placeholder="Enter your dad joke"
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-danger mt-2">
+              Add Joke
+            </button>
+          </form>
+        </div>
+      </div>
     );
 };
 

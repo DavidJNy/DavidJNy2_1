@@ -11,7 +11,6 @@ import DeepValueTrade from './components/deepValueTrades/mainDeepValueTrades.js'
 import Vortex from './components/Vortex/mainVortex.js'
 import Jokes from './components/jokes/mainjokes.js'
 import './components/styles/main.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {

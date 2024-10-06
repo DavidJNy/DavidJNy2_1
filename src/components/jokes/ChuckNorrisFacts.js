@@ -31,11 +31,12 @@ function CNorris() {
               : "Get Another Chuck Norris Fact"}
           </button>
         </div>
+        {data ? 
         <div className="col-md-6 mb-3">
-          <div className="p-3 border bg-light h-100 card">
+          <div className="p-3 border h-100 card">
             <span>{data || "No Chuck Norris fact yet."}</span>
           </div>
-        </div>
+        </div> : null}
       </div>
     </div>
   );
