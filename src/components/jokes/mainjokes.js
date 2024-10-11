@@ -7,9 +7,12 @@ function Mainjokes() {
 
     return (
       <div id="mainJokes" className="justify-content-center container p-3">
-        <ChuckNorris />
-        <DadJokes />
-        
+        <div className="border mt-4">
+          <ChuckNorris />
+        </div>
+        <div className="border mt-4">
+          <DadJokes />
+        </div>
       </div>
     );
 }

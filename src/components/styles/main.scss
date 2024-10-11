@@ -35,17 +35,31 @@ $enable-negative-margins: true;
 // Global Styles
 
 #App {
-    background-color: $dark; // Use Bootstrap's dark color
+    background-color: $gray-800;
     width: 100%;
     font-family: 'Times New Roman', Times, serif;
+    z-index: -5;
+    position: absolute;
+
+    .fixed-background-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 98vw;
+        height: 98vh;
+        margin: 1em;
+        opacity: 80%;
+        background-color: $gray-900; /* Slightly off-bootstrap dark */
+        z-index: -1; /* Make sure it's behind the content */
+}
 }
 
 // Navigation
 nav {
     position: sticky;
     top: 0px;
-    background-color: $dark;
     width: 100%;
+    z-index: 10;
 
     img {
         height: 35px;
@@ -79,6 +93,9 @@ nav {
 #Projects,
 #Contact {
     @include baseline;
+    z-index: 1;
+    margin-top: 3em;
+
 }
 
 #Main {
@@ -86,6 +103,8 @@ nav {
         overflow: hidden;
         height: 50vh;
     }
+
+    
 }
 
 #About {
@@ -130,7 +149,6 @@ nav {
 }
 
 #Footer {
-    background-color: $dark;
 
     img {
         height: 35px;

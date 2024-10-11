@@ -17,23 +17,23 @@ function App() {
 
   return (
     <BrowserRouter>
-        <div id="App">
-        <NavigationBar/>
-          <Routes>
-            <Route path="/" element={<Main/>}/>
-            <Route path="/About" element={<About/>}/>
-            <Route path="/Projects" element={<Projects/>}/>
-            <Route path="/Contact" element={<ContactMe/>}/>
-            <Route path="*" element={<YouLost/>}/>
-            <Route path="/ParkBuddy" element={<ParkBuddy/>}/>
-            <Route path="/DeepValueTrade" element={<DeepValueTrade/>}/>
-            <Route path="/Vortex" element={<Vortex/>}/>
-            <Route path="/Jokes" element={<Jokes />}/>
-          </Routes>
-        <Footer/>
-        </div>
+      <div id="App">
+        <div className="fixed-background-container"></div>
+        <NavigationBar />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Projects" element={<Projects />} />
+          <Route path="/Contact" element={<ContactMe />} />
+          <Route path="*" element={<YouLost />} />
+          <Route path="/ParkBuddy" element={<ParkBuddy />} />
+          <Route path="/DeepValueTrade" element={<DeepValueTrade />} />
+          <Route path="/Vortex" element={<Vortex />} />
+          <Route path="/Jokes" element={<Jokes />} />
+        </Routes>
+        <Footer />
+      </div>
     </BrowserRouter>
-
   );
 }
 

@@ -34,11 +34,11 @@ function NavigationBar() {
 
       return (
         <div>
-            <nav className="navbar navbar-expand-sm position-sticky">
+            <nav className="navbar navbar-expand-sm position-sticky mt-3">
                 <div className="container-lg d-flex justify-content-between">
                     <Link className="nav-link d-flex justify-content-center" to="/" >
-                        <img alt="logo" src={ChiliLogo2} id="clogo" className="mt-1 me-2" />
-                        <h2 className="mt-2 title">{viewportContent}</h2>
+                        <img alt="logo" src={ChiliLogo2} id="clogo" className="me-2" />
+                        <h2 className="title">{viewportContent}</h2>
                     </Link>
                     <div>
                         <button className="navbar-toggler ml-auto" type="button" 
