@@ -1,4 +1,4 @@
-@import '~bootstrap/scss/bootstrap'; // Import Bootstrap
+@import '~bootstrap/scss/bootstrap'; 
 
 // Variables
 $enable-negative-margins: true;
@@ -12,7 +12,7 @@ $enable-negative-margins: true;
 
 @mixin logo() {
     font-size: xx-large;
-    color: $white; // Use Bootstrap's primary color
+    color: $white; 
 }
 
 @mixin backLight() {
@@ -32,7 +32,7 @@ $enable-negative-margins: true;
     }
 }
 
-// Global Styles
+
 
 #App {
     background-color: $gray-800;
@@ -45,16 +45,16 @@ $enable-negative-margins: true;
         position: fixed;
         top: 0;
         left: 0;
-        width: 98vw;
-        height: 98vh;
+        width: calc(100% - 2em);
+        height: calc(100% - 2em);
         margin: 1em;
         opacity: 80%;
-        background-color: $gray-900; /* Slightly off-bootstrap dark */
-        z-index: -1; /* Make sure it's behind the content */
+        background-color: $gray-900;
+        z-index: -1; 
 }
 }
 
-// Navigation
+
 nav {
     position: sticky;
     top: 0px;
@@ -73,11 +73,11 @@ nav {
         .nav-link {
             padding-right: 1em;
             font-size: small;
-            color: $white; // Use Bootstrap's danger color
+            color: $white;
 
             &:focus,
             &:hover {
-                color: $red; // Use Bootstrap's success color
+                color: $red; 
             }
         }
 
@@ -91,6 +91,7 @@ nav {
 #Main,
 #About,
 #Projects,
+#VidDownloader,
 #Contact {
     @include baseline;
     z-index: 1;
@@ -123,6 +124,10 @@ nav {
     }
 }
 
+#VidDownloader {
+    
+}
+
 #Contact {
     letter-spacing: 0.15em;
     line-height: 2;
@@ -133,7 +138,7 @@ nav {
         transition-property: transform;
 
         &:hover {
-            color: $warning; // Use Bootstrap's warning color
+            color: $warning; 
             transform: scale(1.5);
         }
     }

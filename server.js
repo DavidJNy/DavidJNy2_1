@@ -7,6 +7,7 @@ const db = require("./config/db");
 const jokeRoutes = require("./routes/jokeRoutes");
 const authRoutes = require("./routes/authRoutes");
 const chatRoutes = require("./routes/chatRoutes");
+const vidRoutes = require("./routes/vidRoutes");
 const setupWebSocket = require("./websocket/websocket");
 
 const PORT = 3001;
@@ -30,6 +31,7 @@ app.use(
 app.use("/api/jokes", jokeRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/viddownload", vidRoutes);
 
 // Serve static files from the 'build' folder
 app.use(express.static(path.join(__dirname, "build")));

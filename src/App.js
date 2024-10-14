@@ -10,6 +10,7 @@ import ParkBuddy from './components/parkbuddy/mainParkBuddy.js'
 import DeepValueTrade from './components/deepValueTrades/mainDeepValueTrades.js'
 import Vortex from './components/Vortex/mainVortex.js'
 import Jokes from './components/jokes/mainjokes.js'
+import VidDownloader from "./components/VidDwnloader.js";
 import './components/styles/main.scss'
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/DeepValueTrade" element={<DeepValueTrade />} />
           <Route path="/Vortex" element={<Vortex />} />
           <Route path="/Jokes" element={<Jokes />} />
+          <Route path="/VidDownloader" element={<VidDownloader />} />
         </Routes>
         <Footer />
       </div>
