@@ -50,7 +50,7 @@ function ContactMe () {
     };
 
     return (
-      <div id="Contact" className="container">
+      <div id="Contact" className="container fade-in-left">
         <div className="">
           <h1 className="">Contact Me</h1>
           <hr className="solid"></hr>
