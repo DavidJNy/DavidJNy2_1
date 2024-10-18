@@ -1,17 +1,59 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import RotatingGlobe from "./RotatingGlobe.js";
 import proPix from "./images/meprofile.jpg";
 
-
 function Main() {
+  const [philosophyProps, setPhilosophyProps] = useState({
+    opacity: 0,
+    transform: "translateX(-100px)",
+  });
+  const [aboutProps, setAboutProps] = useState({
+    opacity: 0,
+    transform: "translateX(-100px)",
+  });
+
+  const handleScroll = useCallback(() => {
+    const philosophyElement = document.getElementById("philosophy");
+    const aboutElement = document.getElementById("about");
+
+    if (philosophyElement) {
+      const philosophyRect = philosophyElement.getBoundingClientRect();
+      if (
+        philosophyRect.top <= window.innerHeight * (3 / 4) &&
+        philosophyRect.bottom > 0
+      ) {
+        setPhilosophyProps({ opacity: 1, transform: "translateX(0)" });
+      }
+    }
+
+    if (aboutElement) {
+      const aboutRect = aboutElement.getBoundingClientRect();
+      if (
+        aboutRect.top <= window.innerHeight * (3 / 4) &&
+        aboutRect.bottom > 0
+      ) {
+        setAboutProps({ opacity: 1, transform: "translateX(0)" });
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Call handleScroll initially to check visibility when the component mounts
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]); // Now handleScroll is a stable dependency
+
   return (
     <div id="Main" className="container justify-content-center">
       {/* Introduction Section */}
       <div className="row my-5 min100height">
         <div className="col-md-6 lead text-center fade-in-left">
-          <h2 className="">Hi, my name is David Ny.</h2>
+          <h2>Hi, my name is David Ny.</h2>
           <p>I'm a full-stack web developer from Los Angeles, CA.</p>
-          <img src={proPix} class="img-fluid round m-2" alt="mepro"></img>
+          <img src={proPix} className="img-fluid round m-2" alt="mepro" />
         </div>
         <div className="col-md-6 d-flex justify-content-center spincube">
           <RotatingGlobe />
@@ -29,8 +71,16 @@ function Main() {
       </div>
 
       {/* Philosophy Section */}
-      <div className="row my-5 min100height ">
-        <div className="col text-center fade-in-left">
+      <div
+        className="row my-5 min100height"
+        id="philosophy"
+        style={{
+          opacity: philosophyProps.opacity,
+          transform: philosophyProps.transform,
+          transition: "opacity 0.5s ease, transform 0.5s ease",
+        }}
+      >
+        <div className="col text-center">
           <h2>My Philosophy</h2>
           <p className="lead">
             I strive to make the web a better place, always seeking ways to
@@ -43,7 +93,15 @@ function Main() {
       </div>
 
       {/* About Me Section */}
-      <div className="row my-5 min100height">
+      <div
+        className="row my-5 min100height"
+        id="about"
+        style={{
+          opacity: aboutProps.opacity,
+          transform: aboutProps.transform,
+          transition: "opacity 0.5s ease, transform 0.5s ease",
+        }}
+      >
         <div className="col text-center">
           <h2>About Me</h2>
           <p>
@@ -79,9 +137,3 @@ function Main() {
 }
 
 export default Main;
-
-// https://www.youtube.com/watch?v=O4u8n_CjUDY&ab_channel=Honoka%26Azita
-// Maybe add https://codepen.io/wefiy/pen/WPpEwo (Tacky matrix wallpaper behind logo) :)
-// https://alvarotrigo.com/blog/css-animations-scroll/
-// Add resume pdf button.
-// maybe add contact to load email

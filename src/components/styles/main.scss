@@ -57,39 +57,6 @@ $enable-negative-margins: true;
 }
 }
 
-
-nav {
-    position: sticky;
-    top: 0px;
-    width: 100%;
-    z-index: 10;
-
-    img {
-        height: 35px;
-    }
-
-    h2 {
-        @include logo;
-    }
-
-    ul {
-        .nav-link {
-            padding-right: 1em;
-            font-size: small;
-            color: $white;
-
-            &:focus,
-            &:hover {
-                color: $red; 
-            }
-        }
-
-        .vr {
-            width: 1px;
-        }
-    }
-}
-
 // Main Section
 #Main,
 #About,
@@ -195,8 +162,35 @@ nav {
     }
 }
 
+nav {
+    top: 0px;
+    width: 100%;
 
+    img {
+        height: 35px;
+    }
 
+    h2 {
+        @include logo;
+    }
+
+    ul {
+        .nav-link {
+            padding-right: 1em;
+            font-size: small;
+            color: $white;
+
+            &:focus,
+            &:hover {
+                color: $red; 
+            }
+        }
+
+        .vr {
+            width: 1px;
+        }
+    }
+}
 
 .min100height {
     min-height: 100vh;
@@ -215,6 +209,15 @@ nav {
 /* Fade in from the right */
 .fade-in-right {
   animation: fadeInRight 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateX(-30px); /* Start from the left */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* When the element is visible, apply this class */
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0); /* Move to original position */
 }
 
 /* Keyframes for fading in from the left */
@@ -249,6 +252,18 @@ nav {
     color: rgb(245 45 45 / 70%);
 }
 
+.navbar {
+    transition: background-color 0.5s ease, margin-top 0.5s ease;
+    background-color: transparent;
+    margin-top: 1em;
+    z-index: 1030;
+}
+
+.navbar.scrolled {
+    background-color: #343a40;
+    margin-top: 0;
+    transition: background-color 0.5s ease , margin-top 0.5s ease ;
+}
 
 
 

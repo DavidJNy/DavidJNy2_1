@@ -11,6 +11,7 @@ import DeepValueTrade from './components/deepValueTrades/mainDeepValueTrades.js'
 import Vortex from './components/Vortex/mainVortex.js'
 import Jokes from './components/jokes/mainjokes.js'
 import VidDownloader from "./components/VidDwnloader.js";
+import ScrollToTheTop from "./components/scrollToTop.js";
 import './components/styles/main.scss'
 
 
@@ -20,6 +21,7 @@ function App() {
     <BrowserRouter>
       <div id="App">
         <div className="fixed-background-container"></div>
+        <ScrollToTheTop />
         <NavigationBar />
         <Routes>
           <Route path="/" element={<Main />} />

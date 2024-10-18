@@ -6,6 +6,7 @@ import { CgFormatJustify } from "react-icons/cg";
 
 function NavigationBar() {
   const [viewportContent, setViewportContent] = useState("David Ny");
+  const [scrolled, setScrolled] = useState(false); // State to track scrolling
 
   useEffect(() => {
     function handleResize() {
@@ -16,22 +17,31 @@ function NavigationBar() {
       }
     }
 
-    // Add event listener for window resize
+    function handleScroll() {
+      // Set scrolled state based on scroll position
+      setScrolled(window.scrollY > 0);
+    }
+
+    // Add event listeners
     window.addEventListener("load", handleResize);
     window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll); // Listen for scroll events
 
     // Cleanup function
     return () => {
       window.removeEventListener("load", handleResize);
-      window.removeEventListener("resize", handleResize); // Corrected to remove the right event listener
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll); // Cleanup scroll listener
     };
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, []);
 
   return (
     <div>
-      <nav className="navbar navbar-expand-sm navbar-light fixed-top mt-3">
-        {" "}
-        {/* Added fixed-top class */}
+      <nav
+        className={`navbar navbar-expand-sm navbar-light fixed-top ${
+          scrolled ? "scrolled" : ""
+        }`}
+      >
         <div className="container d-flex justify-content-between">
           <Link className="nav-link d-flex justify-content-center ps-2" to="/">
             <img

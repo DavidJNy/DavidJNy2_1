@@ -5,6 +5,7 @@
   "dependencies": {
     "@emailjs/browser": "4.4.1",
     "@jridgewell/sourcemap-codec": "1.4.15",
+    "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.114.4",
     "@react-three/fiber": "^8.17.10",
     "@rollup/plugin-terser": "0.4.4",
