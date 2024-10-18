@@ -1,25 +1,36 @@
 import React from "react";
 import RotatingGlobe from "./RotatingGlobe.js";
+import proPix from "./images/meprofile.jpg";
+
 
 function Main() {
   return (
     <div id="Main" className="container justify-content-center">
-      
-
       {/* Introduction Section */}
-      <div className="row my-4">
-        <div className="lead col-md-6 text-center">
-          <h1>Hi, my name is David Ny.</h1>
+      <div className="row my-5 min100height">
+        <div className="col-md-6 lead text-center fade-in-left">
+          <h2 className="">Hi, my name is David Ny.</h2>
           <p>I'm a full-stack web developer from Los Angeles, CA.</p>
+          <img src={proPix} class="img-fluid round m-2" alt="mepro"></img>
         </div>
-        <div className="col-md-6 d-flex justify-content-center">
+        <div className="col-md-6 d-flex justify-content-center spincube">
           <RotatingGlobe />
+        </div>
+        <div className="row my-5">
+          <div className="col text-center">
+            <button
+              onClick={() => window.open("assets/ResumeQ4_2024.pdf", "_blank")}
+              className="btn btn-primary"
+            >
+              View My Resume
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Philosophy Section */}
-      <div className="row my-5">
-        <div className="col text-center">
+      <div className="row my-5 min100height ">
+        <div className="col text-center fade-in-left">
           <h2>My Philosophy</h2>
           <p className="lead">
             I strive to make the web a better place, always seeking ways to
@@ -32,7 +43,7 @@ function Main() {
       </div>
 
       {/* About Me Section */}
-      <div className="row my-5">
+      <div className="row my-5 min100height">
         <div className="col text-center">
           <h2>About Me</h2>
           <p>

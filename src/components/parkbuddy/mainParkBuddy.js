@@ -48,7 +48,7 @@ function MainPark() {
   
 
   return (
-    <Container id="Main" className="">
+    <Container id="ParkBuddy" className="">
       <div id="Map">
         <MapApp onChatroomSelect={handleChatroomSelect} />
       </div>
@@ -61,7 +61,9 @@ function MainPark() {
       ) : (
         <Container id="Login">
           <Row className="justify-content-center p-2">
-            <Col className="col-6 text-center fs-3">Please login to use the chatroom</Col>
+            <Col className="col-6 text-center fs-3">
+              Please login to use the chatroom
+            </Col>
           </Row>
           <LoginForm onLogin={handleLogin} />
         </Container>
