@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#type "bash deploy.sh" to run script
+
 echo "Pulling from main..."
 git pull
 
