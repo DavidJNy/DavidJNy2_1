@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Card, Form, Alert } from "react-bootstrap";
 import RegisterForm from "./registerer";
-import { Card, Form } from "react-bootstrap";
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -20,7 +19,6 @@ const LoginForm = ({ onLogin }) => {
         password,
       });
       const { token } = response.data; // Destructure the token from response data
-      console.log(response.data);
       onLogin(username);
       localStorage.setItem("token", token);
     } catch (error) {
@@ -38,34 +36,48 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
-    <Card className="col-4">
-      <Card.Body className="">
-        {/* <Row> */}
+    <Card className="col-sm-6 mx-auto my-5 shadow">
+      <Card.Header className="text-center bg-primary text-white">
+        <h4>Login</h4>
+      </Card.Header>
+      <Card.Body>
         <Form onSubmit={handleLoginSubmit}>
-          {error && <p>{error}</p>}
-          <div>
-            <label>Username:</label>
-            <input
+          {error && (
+            <Alert variant="danger" className="text-center">
+              {error}
+            </Alert>
+          )}
+          <Form.Group controlId="formUsername" className="mb-3">
+            <Form.Label>Username:</Form.Label>
+            <Form.Control
               type="text"
+              placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              />
-          </div>
-          <Form.Group>
-            <label>Password:</label>
-            <input
+            />
+          </Form.Group>
+          <Form.Group controlId="formPassword" className="mb-3">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
               type="password"
+              placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              />
+            />
           </Form.Group>
-          <Button type="submit">Login</Button>
-          <Button variant="link" onClick={handleRegisterClick} className="">
-            Register
-          </Button>
+          <div className="d-grid gap-2">
+            <Button type="submit" variant="primary">
+              Login
+            </Button>
+            <Button
+              variant="link"
+              onClick={handleRegisterClick}
+              className="text-decoration-none"
+            >
+              Register
+            </Button>
+          </div>
         </Form>
-        {/* </Row> */}
-
         <Modal show={showRegisterModal} onHide={handleCloseRegisterModal}>
           <Modal.Header closeButton>
             <Modal.Title>Register</Modal.Title>

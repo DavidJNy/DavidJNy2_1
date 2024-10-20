@@ -49,6 +49,9 @@ function MainPark() {
 
   return (
     <Container id="ParkBuddy" className="">
+      <div>
+        <h1 className="text-center">Park Buddy</h1>
+      </div>
       <div id="Map">
         <MapApp onChatroomSelect={handleChatroomSelect} />
       </div>
