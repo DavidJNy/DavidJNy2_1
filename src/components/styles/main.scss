@@ -265,7 +265,9 @@ nav {
     transition: background-color 0.5s ease , margin-top 0.5s ease ;
 }
 
-
+.navbar:has(.show) {
+    background-color: #343a40;
+}
 
 
 // Media Queries
