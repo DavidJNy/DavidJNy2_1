@@ -37,15 +37,15 @@ function Footer() {
             <div className="d-flex column-gap-3">
               <a
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener"
                 className="m-2"
-                href="https://www.facebook.com/DavidJNeee/"
+                href="https://facebook.com/DavidJNeee/"
               >
                 <BsFacebook size="2em" />
               </a>
               <a
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener"
                 className="m-2"
                 href="https://www.linkedin.com/in/davidjny/"
               >
@@ -53,7 +53,7 @@ function Footer() {
               </a>
               <a
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener"
                 className="m-2"
                 href="https://www.instagram.com/psykomcnasty/"
               >
@@ -61,7 +61,7 @@ function Footer() {
               </a>
               <a
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener"
                 className="m-2"
                 href="https://github.com/DavidJNy"
               >
