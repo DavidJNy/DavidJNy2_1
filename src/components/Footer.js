@@ -39,7 +39,7 @@ function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 className="m-2"
-                href="https://www.facebook.com/DavidJNeee/"
+                href="https://wwww.facebook.com/DavidJNeee/"
               >
                 <BsFacebook size="2em" />
               </a>
@@ -47,7 +47,7 @@ function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 className="m-2"
-                href="https://www.linkedin.com/in/davidjny/"
+                href="https://wwww.linkedin.com/in/davidjny/"
               >
                 <BsLinkedin size="2em" />
               </a>
