@@ -1,21 +1,35 @@
+import React from "react";
+import useWebSocket from "react-use-websocket";
+import { useState, useEffect } from "react";
 
-import React from 'react'
-import { useEffect, useState } from "react";
-
-// Component to handle WebSocket connections
 const WebSocketComponent = ({ endpoint, title }) => {
   const [updates, setUpdates] = useState([]);
 
+  // WebSocket URL (Replace with your server's IP)
+  const WS_URL = `${process.env.REACT_APP_WS_URL}/ws/${endpoint}`;
+  
+  // const { sendJsonMessage, lastJsonMessage } = useWebSocket(WS_URL, {
+  const { lastJsonMessage } = useWebSocket(WS_URL, {
+  shouldReconnect: () => true,  // Automatically reconnect on disconnect
+  reconnectAttempts: 10,        // Retry up to 10 times
+  reconnectInterval: 3000,      // Reconnect every 3 seconds
+  onOpen: () => console.log('WebSocket connected!'),   // Called when WebSocket opens
+  onClose: () => console.log('WebSocket connection closed'), // Called when WebSocket closes
+  onError: (error) => console.error('WebSocket error:', error), // Called when there’s an error
+  onmessage: (event) => {
+    const data = JSON.parse(event.data);
+    console.log("Received WebSocket Data:", data);
+  },  // Called when a message is received
+  pingInterval: 30000,          // Send a ping every 30 seconds
+  });
+  // console.log(lastJsonMessage)
+  // console.log(lastJsonMessage)
+  // Handle incoming WebSocket messages
   useEffect(() => {
-    const socket = new WebSocket(`ws://localhost:8001/ws/${endpoint}`);
-
-    socket.onmessage = (event) => {
-      const update = JSON.parse(event.data);
-      setUpdates((prevUpdates) => [update, ...prevUpdates]); // Add new updates at the top
-    };
-
-    return () => socket.close(); // Close the socket when the component is unmounted
-  }, [endpoint]);
+    if (lastJsonMessage) {
+      setUpdates((prevUpdates) => [lastJsonMessage, ...prevUpdates.slice(0, 49)]);
+    }
+  }, [lastJsonMessage]);
 
   return (
     <div style={{ maxHeight: "400px", overflowY: "scroll", border: "1px solid black", margin: "10px" }}>
@@ -29,28 +43,29 @@ const WebSocketComponent = ({ endpoint, title }) => {
   );
 };
 
-function mainDeepValueTrades() {
+function MainDeepValueTrades() {
+  const scanners = [
+    { endpoint: "big_volume_pump", title: "big_volume_pump" },
+    { endpoint: "big_percent_increase", title: "Big Percent Increase Scanner" },
+    { endpoint: "relative_volume_spikes", title: "Relative Volume Spikes Scanner" },
+    { endpoint: "sudden_volume_spikes", title: "Sudden Volume Spikes Scanner" },
+    { endpoint: "z_scores", title: "Z-Scores Scanner" },
+    { endpoint: "minute_volume_spikes", title: "Minute Volume Spikes" },
+    { endpoint: "unusual_activity", title: "Unusual Activity" },
+    { endpoint: "roc_stocks", title: "Rate of Change" },
+    { endpoint: "percent_increases", title: "Percent Increases Scanner" },
+    { endpoint: "stock_halts", title: "Stock Halts" },
+  ];
 
   return (
     <div id="DeepValueTrade" className="justify-content-center container">
-      <div>
-        <div className="text-center pt-3 fs-1">Deep Value Trades</div>
-      </div>
-      <div>
-        <h2>Stock Data WebSocket Updates</h2>
-        <WebSocketComponent endpoint="hundredthousand" title="Hundred Thousand Stock Scanner" />
-        <WebSocketComponent endpoint="big_percent_increase" title="Big Percent Increase Scanner" />
-        <WebSocketComponent endpoint="relative_volume_spikes" title="Relative Volume Spikes Scanner" />
-        <WebSocketComponent endpoint="sudden_volume_spikes" title="Sudden Volume Spikes Scanner" />
-        <WebSocketComponent endpoint="z_scores" title="Z-Scores Scanner" />
-        <WebSocketComponent endpoint="minute_volume_spikes" title="Minute Volume Spikes" />
-        <WebSocketComponent endpoint="unusual_activity" title="Unusual Activity" />
-        <WebSocketComponent endpoint="roc_stocks" title="Rate of Change" />
-        <WebSocketComponent endpoint="percent_increases" title="Percent Increases Scanner" />
-        <WebSocketComponent endpoint="stock_halts" title="Stock Halts" />
-      </div>
+      <div className="text-center pt-3 fs-1">Deep Value Trades</div>
+      <h2>Stock Data WebSocket Updates</h2>
+      {scanners.map(({ endpoint, title }) => (
+        <WebSocketComponent key={endpoint} endpoint={endpoint} title={title} />
+      ))}
     </div>
   );
 }
 
-export default mainDeepValueTrades
+export default MainDeepValueTrades;
