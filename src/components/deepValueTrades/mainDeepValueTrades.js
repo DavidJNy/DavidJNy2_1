@@ -7,8 +7,11 @@ const WebSocketComponent = ({ endpoint, title }) => {
   const [columns, setColumns] = useState([]);
   const [flashingRows, setFlashingRows] = useState(new Set());
 
+  const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+  const host = window.location.hostname;
+
   // WebSocket URL (Replace with your server's IP)
-  const WS_URL = `${process.env.REACT_APP_WS_URL}/ws/${endpoint}`;
+  const WS_URL = `${protocol}://${host}/ws/${endpoint}`;
   
   // const { sendJsonMessage, lastJsonMessage } = useWebSocket(WS_URL, {
   const { lastJsonMessage } = useWebSocket(WS_URL, {
@@ -28,21 +31,26 @@ const WebSocketComponent = ({ endpoint, title }) => {
     // console.log(lastJsonMessage)
 
     // Handle incoming WebSocket messages
-    useEffect(() => {
-      if (lastJsonMessage && lastJsonMessage.data) {
-        const newData = lastJsonMessage.data;
-      
-        setColumns(Object.keys(newData[0] || {})); // Extract columns from the first object
+useEffect(() => {
+  if (lastJsonMessage && lastJsonMessage.data) {
+    const newData = lastJsonMessage.data;
 
-        setUpdates((prevUpdates) => {
+    // Ensure newData is an array
+    if (Array.isArray(newData)) {
+      setColumns(Object.keys(newData[0] || {})); // Extract columns from the first object
+
+      setUpdates((prevUpdates) => {
         const newRows = new Set(newData.map(item => item.symbol)); // Track new entries
-          setFlashingRows(newRows);
-          
-          setTimeout(() => setFlashingRows(new Set()), 500); // Remove flash after 500ms
-          return [...newData, ...prevUpdates]; // Limit to 50 rows
+        setFlashingRows(newRows);
+
+        setTimeout(() => setFlashingRows(new Set()), 500); // Remove flash after 500ms
+        return [...newData, ...prevUpdates]; // Limit to 50 rows
       });
-      }
-  }, [lastJsonMessage]);
+    } else {
+      console.error("Received data is not an array:", newData);
+    }
+  }
+}, [lastJsonMessage]);
 
   const formatTime = (timestamp) => {
     return new Date(timestamp).toLocaleTimeString("en-US", { hour12: false });
