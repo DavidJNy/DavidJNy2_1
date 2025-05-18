@@ -92,7 +92,7 @@ const WebSocketComponent = ({ endpoint, title }) => {
             {updates.map((item, index) => (
               <tr key={index} className={flashingRows.has(item.symbol) ? "table-flash" : ""}>
                 {columns.map((col) => (
-                  <td key={col} className="p-1 m-0">
+                  <td key={col} className="">
                     {col.includes("timestamp") ? formatTime(item[col]) : item[col]}
                   </td>
                 ))}
