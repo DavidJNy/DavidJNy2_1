@@ -9,7 +9,9 @@ const WebSocketComponent = ({ endpoint, title }) => {
 
   const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 
-  const WS_URL = `wss://www.davidjny.com/ws/${endpoint}`;
+  // const WS_URL = `wss://www.davidjny.com/ws/${endpoint}`;
+  const WS_URL = `${protocol}://www.davidjny.com/ws/${endpoint}`;
+
   
   const { lastJsonMessage } = useWebSocket(WS_URL, {
     shouldReconnect: () => true,  // Automatically reconnect on disconnect
@@ -111,12 +113,12 @@ function MainDeepValueTrades() {
     { endpoint: "stock_halts", title: "Stock Halts" },
     { endpoint: "big_percent_increase", title: "Big Percent Increase Scanner" },
     { endpoint: "big_volume_pump", title: "Big Volume Pump" },
-    { endpoint: "roc_stocks", title: "Rate of Change" },
     { endpoint: "relative_volume_spikes", title: "Relative Volume Spikes Scanner" },
     { endpoint: "sudden_volume_spikes", title: "Sudden Volume Spikes Scanner" },
     { endpoint: "z_scores", title: "Z-Scores Scanner" },
-    { endpoint: "minute_volume_spikes", title: "Minute Volume Spikes" },
     { endpoint: "unusual_activity", title: "Unusual Activity" },
+    { endpoint: "minute_volume_spikes", title: "Minute Volume Spikes" },
+    { endpoint: "roc_stocks", title: "Rate of Change" },
   ];
 
   const [visibleScanners, setVisibleScanners] = useState(
