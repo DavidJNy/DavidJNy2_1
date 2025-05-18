@@ -8,12 +8,9 @@ const WebSocketComponent = ({ endpoint, title }) => {
   const [flashingRows, setFlashingRows] = useState(new Set());
 
   const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-  const host = window.location.hostname;
 
-  // WebSocket URL (Replace with your server's IP)
-  const WS_URL = `${protocol}://${host}/ws/${endpoint}`;
+  const WS_URL = `wss://www.davidjny.com/ws/${endpoint}`;
   
-  // const { sendJsonMessage, lastJsonMessage } = useWebSocket(WS_URL, {
   const { lastJsonMessage } = useWebSocket(WS_URL, {
     shouldReconnect: () => true,  // Automatically reconnect on disconnect
     reconnectAttempts: 10,        // Retry up to 10 times
@@ -31,48 +28,71 @@ const WebSocketComponent = ({ endpoint, title }) => {
     // console.log(lastJsonMessage)
 
     // Handle incoming WebSocket messages
-useEffect(() => {
-  if (lastJsonMessage && lastJsonMessage.data) {
-    const newData = lastJsonMessage.data;
+    useEffect(() => {
+      if (lastJsonMessage && lastJsonMessage.data) {
+        const newData = lastJsonMessage.data;
+    
+        if (Array.isArray(newData)) {
+          setColumns(Object.keys(newData[0] || {}));
+    
+          // Identify symbols in this update to flash
+          const newSymbols = new Set(newData.map(item => item.symbol));
+          setFlashingRows(newSymbols);
+    
+          // Remove flash state after 500ms
+          setTimeout(() => {
+            setFlashingRows(new Set());
+          }, 500);
+    
+          setUpdates((prevUpdates) => {
+            const combined = [...newData, ...prevUpdates];
+    
+            // Remove duplicates by symbol (or symbol+timestamp if needed)
+            const unique = Array.from(
+              new Map(combined.map(item => [item.symbol, item])).values()
+            );
+    
+            return unique.slice(0, 50); // Keep most recent 50 unique entries
+          });
+        } else {
+          console.error("Received data is not an array:", newData);
+        }
+      }
+    }, [lastJsonMessage]);
 
-    // Ensure newData is an array
-    if (Array.isArray(newData)) {
-      setColumns(Object.keys(newData[0] || {})); // Extract columns from the first object
+// const formattedData = Array.isArray(newData) ? newData : [newData];
 
-      setUpdates((prevUpdates) => {
-        const newRows = new Set(newData.map(item => item.symbol)); // Track new entries
-        setFlashingRows(newRows);
+// setColumns(Object.keys(formattedData[0] || {}));
 
-        setTimeout(() => setFlashingRows(new Set()), 500); // Remove flash after 500ms
-        return [...newData, ...prevUpdates]; // Limit to 50 rows
-      });
-    } else {
-      console.error("Received data is not an array:", newData);
-    }
-  }
-}, [lastJsonMessage]);
+// setUpdates((prevUpdates) => {
+//   const newRows = new Set(formattedData.map(item => item.symbol));
+//   setFlashingRows(newRows);
+//   setTimeout(() => setFlashingRows(new Set()), 500);
+//   return [...formattedData, ...prevUpdates.slice(0, 49)];
+// });
+
 
   const formatTime = (timestamp) => {
     return new Date(timestamp).toLocaleTimeString("en-US", { hour12: false });
   };
 
   return (
-    <div className="">
-      <h3>{title}</h3>
-      <div style={{ overflowX: "auto" }}>
-        <table className="table table-dark">
-          <thead>
+    <div className="col-12 col-sm-6 mb-4">
+      <h3 className="mb-2">{title}</h3>
+      <div className="table-responsive fixed-table-container">
+        <table className="table table-dark table-bordered table-sm mb-0">
+          <thead className="table-light sticky-top">
             <tr>
               {columns.map((col) => (
-                <th key={col} className="col">{col}</th>
+                <th key={col} className="text-nowrap p-1 m-0">{col}</th>
               ))}
             </tr>
           </thead>
-          <tbody className="">
+          <tbody>
             {updates.map((item, index) => (
-              <tr key={index} style={{ backgroundColor: flashingRows.has(item.symbol) ? "white" : "inherit", transition: "background-color 0.5s" }}>
+              <tr key={index} className={flashingRows.has(item.symbol) ? "table-flash" : ""}>
                 {columns.map((col) => (
-                  <td key={col} style={{ border: "1px solid #ddd", padding: "5px" }}>
+                  <td key={col} className="p-1 m-0">
                     {col.includes("timestamp") ? formatTime(item[col]) : item[col]}
                   </td>
                 ))}
@@ -111,7 +131,6 @@ function MainDeepValueTrades() {
     <div id="DeepValueTrade" className="justify-content-center container">
       <div className="header">
         <div className="text-center pt-3 fs-1">Deep Value Trades</div>
-      <h2>Stock Data WebSocket Updates</h2>
         {/* <div className="options">
           {scanners.map(({ endpoint, title }) => (
             <label key={endpoint}>
@@ -124,7 +143,7 @@ function MainDeepValueTrades() {
             </label>
           ))}
         </div> */}
-        <div>
+        <div className="row">
           {scanners.map(({ endpoint, title }) => (
             <WebSocketComponent key={endpoint} endpoint={endpoint} title={title} />
           ))}

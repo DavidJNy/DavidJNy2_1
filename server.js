@@ -20,7 +20,6 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: "https://www.davidjny.com",
-    // origin: "http://localhost:3000",
     methods: ["GET", "POST"],
     allowedHeaders: ["Origin", "Content-Type", "Accept", "Authorization"],
     credentials: true,

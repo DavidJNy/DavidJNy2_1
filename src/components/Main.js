@@ -50,7 +50,7 @@ function Main() {
     <div id="Main" className="container justify-content-center">
       {/* Introduction Section */}
       <div className="row my-5 min100height">
-        <div className="col-md-6 lead text-center fade-in-left">
+        <div className=" p-5 col-md-6 lead text-center fade-in-left">
           <h2>Hi, my name is David Ny.</h2>
           <p>I'm a full-stack web developer from Los Angeles, CA.</p>
           <img src={proPix} className="img-fluid round m-2" alt="mepro" />

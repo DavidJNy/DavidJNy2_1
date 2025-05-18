@@ -9,7 +9,7 @@ $enable-negative-margins: true;
     block-size: fit-content;
     min-height: 100vh;
     z-index: 1;
-    margin-top: 10em;
+    margin-top: 3em;
 
 }
 
@@ -269,6 +269,44 @@ nav {
     background-color: #343a40;
 }
 
+
+.fixed-table-container {
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+
+    &::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari */
+    }
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    margin: 0 !important;
+    padding: 0.25rem !important;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table-flash {
+    animation: flashRow 0.5s ease;
+    background-color: white !important;
+}
+
+@keyframes flashRow {
+    0% {
+        background-color: white;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
 
 // Media Queries
 // Small devices (landscape phones, 576px and down)

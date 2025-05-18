@@ -32,3 +32,5 @@ jokes.db
 database.sqlite
 
 .env
+.env.development
+.env.production
