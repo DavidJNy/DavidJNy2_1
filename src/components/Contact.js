@@ -34,7 +34,7 @@ function ContactMe () {
             return;
         }
 
-        emailjs.sendForm("service_96eiefp", "template_mzxvv08", e.target , "NcI_XxwCuCd3nSlEp")
+        emailjs.sendForm("service_ee66mua", "template_mzxvv08", e.target , "hVrLms7FkIIIQkLsf")
             .then(function (response) {
                 console.log('SUCCESS!', response.status, response.text);
                 setShow(false);
