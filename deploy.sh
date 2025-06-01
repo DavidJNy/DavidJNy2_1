@@ -32,7 +32,7 @@ fi
 echo "Deploying files to server..."
 
 echo "Stopping existing pm2 processes..."
-pm2 stop all
+pm2 stop davidportserver
 
 # Check if pm2 stop all was successful
 if [ $? -ne 0 ]; then
@@ -41,7 +41,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Starting pm2 processes..."
-pm2 restart all
+pm2 restart davidportserver
 
 # Check if pm2 restart all was successful
 if [ $? -ne 0 ]; then
