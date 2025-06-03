@@ -22,7 +22,7 @@ const WebSocketComponent = ({ endpoint, title }) => {
     onError: (error) => console.error('WebSocket error:', error), // Called when there’s an error
     onmessage: (event) => {
       const data = JSON.parse(event.data);
-      console.log("Received WebSocket Data:", data);
+      console.log("WebSocket Raw Event:", event.data);  // full raw string
     },  // Called when a message is received
     pingInterval: 30000,          // Send a ping every 30 seconds
     });
@@ -51,10 +51,10 @@ const WebSocketComponent = ({ endpoint, title }) => {
     
             // Remove duplicates by symbol (or symbol+timestamp if needed)
             const unique = Array.from(
-              new Map(combined.map(item => [item.symbol, item])).values()
+              new Map(combined.map(item => [`${item.symbol}-${item.timestamp}`, item])).values()
             );
     
-            return unique.slice(0, 50); // Keep most recent 50 unique entries
+            return unique.slice(0, 100); // Keep most recent 50 unique entries
           });
         } else {
           console.error("Received data is not an array:", newData);
