@@ -54,7 +54,7 @@ const WebSocketComponent = ({ endpoint, title }) => {
               new Map(combined.map(item => [`${item.symbol}-${item.timestamp}`, item])).values()
             );
     
-            return unique.slice(0, 100); // Keep most recent 50 unique entries
+            return unique.slice(0, 1000); // Keep most recent # unique entries
           });
         } else {
           console.error("Received data is not an array:", newData);
