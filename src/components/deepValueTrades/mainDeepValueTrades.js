@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
-import { useState, useEffect } from "react";
 
 const WebSocketComponent = ({ endpoint, title }) => {
   const [updates, setUpdates] = useState([]);
@@ -12,7 +11,6 @@ const WebSocketComponent = ({ endpoint, title }) => {
   // const WS_URL = `wss://www.davidjny.com/ws/${endpoint}`;
   const WS_URL = `${protocol}://www.davidjny.com/ws/${endpoint}`;
 
-  
   const { lastJsonMessage } = useWebSocket(WS_URL, {
     shouldReconnect: () => true,  // Automatically reconnect on disconnect
     reconnectAttempts: 10,        // Retry up to 10 times
@@ -21,30 +19,31 @@ const WebSocketComponent = ({ endpoint, title }) => {
     onClose: () => console.log('WebSocket connection closed'), // Called when WebSocket closes
     onError: (error) => console.error('WebSocket error:', error), // Called when there’s an error
     onmessage: (event) => {
-      const data = JSON.parse(event.data);
-      console.log("WebSocket Raw Event:", event.data);  // full raw string
+      try {
+        const data = JSON.parse(event.data);
+        console.log("Parsed WebSocket data:", data);
+        console.log("Raw WebSocket event string:", event.data);
+      } catch (err) {
+        console.error("Failed to parse WebSocket data:", event.data, err);
+      }
     },  // Called when a message is received
     pingInterval: 30000,          // Send a ping every 30 seconds
     });
-    // const jsonStringPretty = JSON.stringify(lastJsonMessage, null, 2); // Indent with 2 spaces
-    // console.log(lastJsonMessage)
-
+    
     // Handle incoming WebSocket messages
     useEffect(() => {
-      if (lastJsonMessage && lastJsonMessage.data) {
+      if (lastJsonMessage?.data) {
         const newData = lastJsonMessage.data;
     
         if (Array.isArray(newData)) {
-          setColumns(Object.keys(newData[0] || {}));
+          setColumns(Object.keys(newData[0] || {}).filter(col => col !== "timestamp" && col !== "time_of_trigger"));
     
           // Identify symbols in this update to flash
           const newSymbols = new Set(newData.map(item => item.symbol));
           setFlashingRows(newSymbols);
     
           // Remove flash state after 500ms
-          setTimeout(() => {
-            setFlashingRows(new Set());
-          }, 500);
+          setTimeout(() => setFlashingRows(new Set()), 500);
     
           setUpdates((prevUpdates) => {
             const combined = [...newData, ...prevUpdates];
@@ -61,18 +60,6 @@ const WebSocketComponent = ({ endpoint, title }) => {
         }
       }
     }, [lastJsonMessage]);
-
-// const formattedData = Array.isArray(newData) ? newData : [newData];
-
-// setColumns(Object.keys(formattedData[0] || {}));
-
-// setUpdates((prevUpdates) => {
-//   const newRows = new Set(formattedData.map(item => item.symbol));
-//   setFlashingRows(newRows);
-//   setTimeout(() => setFlashingRows(new Set()), 500);
-//   return [...formattedData, ...prevUpdates.slice(0, 49)];
-// });
-
 
   const formatTime = (timestamp) => {
     return new Date(timestamp).toLocaleTimeString("en-US", { hour12: false });
@@ -133,22 +120,24 @@ function MainDeepValueTrades() {
     <div id="DeepValueTrade" className="justify-content-center container">
       <div className="header">
         <div className="text-center pt-3 fs-1">Deep Value Trades</div>
-        {/* <div className="options">
-          {scanners.map(({ endpoint, title }) => (
-            <label key={endpoint}>
-              <input
-                type="checkbox"
-                checked={visibleScanners[endpoint]}
-                onChange={() => toggleVisibility(endpoint)}
-              />
-              {title}
-            </label>
-          ))}
-        </div> */}
+          <div className="options d-flex flex-wrap justify-content-center py-2">
+            {scanners.map(({ endpoint, title }) => (
+              <label key={endpoint} className="mx-3">
+                <input
+                  type="checkbox"
+                  checked={visibleScanners[endpoint]}
+                  onChange={() => toggleVisibility(endpoint)}
+                />{" "}
+                {title}
+              </label>
+            ))}
+          </div>
         <div className="row">
-          {scanners.map(({ endpoint, title }) => (
-            <WebSocketComponent key={endpoint} endpoint={endpoint} title={title} />
-          ))}
+          {scanners.map(({ endpoint, title }) =>
+            visibleScanners[endpoint] ? (
+              <WebSocketComponent key={endpoint} endpoint={endpoint} title={title} />
+            ) : null
+          )}
         </div>
       </div>
     </div>
