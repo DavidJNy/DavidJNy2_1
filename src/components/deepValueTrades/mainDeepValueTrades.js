@@ -111,14 +111,14 @@ function MainDeepValueTrades() {
   const scanners = [
     { endpoint: "percent_increases", title: "Percent Increases Scanner" },
     { endpoint: "stock_halts", title: "Stock Halts" },
-    { endpoint: "big_percent_increase", title: "Big Percent Increase Scanner" },
-    { endpoint: "big_volume_pump", title: "Big Volume Pump" },
     { endpoint: "relative_volume_spikes", title: "Relative Volume Spikes Scanner" },
-    { endpoint: "sudden_volume_spikes", title: "Sudden Volume Spikes Scanner" },
-    { endpoint: "z_scores", title: "Z-Scores Scanner" },
-    { endpoint: "unusual_activity", title: "Unusual Activity" },
-    { endpoint: "minute_volume_spikes", title: "Minute Volume Spikes" },
-    { endpoint: "roc_stocks", title: "Rate of Change" },
+    { endpoint: "big_volume_pump", title: "Big Volume Pump" },
+    { endpoint: "big_percent_increase", title: "Big Percent Increase Scanner" }
+    // { endpoint: "sudden_volume_spikes", title: "Sudden Volume Spikes Scanner" },
+    // { endpoint: "z_scores", title: "Z-Scores Scanner" },
+    // { endpoint: "unusual_activity", title: "Unusual Activity" },
+    // { endpoint: "minute_volume_spikes", title: "Minute Volume Spikes" },
+    // { endpoint: "roc_stocks", title: "Rate of Change" },
   ];
 
   const [visibleScanners, setVisibleScanners] = useState(
