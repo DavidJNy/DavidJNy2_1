@@ -97,10 +97,10 @@ const WebSocketComponent = ({ endpoint, title }) => {
 function MainDeepValueTrades() {
   const scanners = [
     { endpoint: "percent_increases", title: "Percent Increases Scanner" },
-    { endpoint: "stock_halts", title: "Stock Halts" },
-    { endpoint: "relative_volume_spikes", title: "Relative Volume Spikes Scanner" },
+    { endpoint: "relative_volume_spike", title: "Relative Volume Spikes Scanner" },
     { endpoint: "big_volume_pump", title: "Big Volume Pump" },
-    { endpoint: "big_percent_increase", title: "Big Percent Increase Scanner" }
+    { endpoint: "big_percent_increase", title: "Big Percent Increase Scanner" },
+    { endpoint: "stock_halts", title: "Stock Halts" }
     // { endpoint: "sudden_volume_spikes", title: "Sudden Volume Spikes Scanner" },
     // { endpoint: "z_scores", title: "Z-Scores Scanner" },
     // { endpoint: "unusual_activity", title: "Unusual Activity" },
