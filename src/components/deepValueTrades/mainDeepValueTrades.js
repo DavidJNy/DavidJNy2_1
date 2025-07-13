@@ -4,62 +4,54 @@ import useWebSocket from "react-use-websocket";
 const WebSocketComponent = ({ endpoint, title }) => {
   const [updates, setUpdates] = useState([]);
   const [columns, setColumns] = useState([]);
-  const [flashingRows, setFlashingRows] = useState(new Set());
+  const [flashingRow, setFlashingRow] = useState(new Set());
 
   const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 
-  // const WS_URL = `wss://www.davidjny.com/ws/${endpoint}`;
-  const WS_URL = `${protocol}://www.davidjny.com/ws/${endpoint}`;
+  const WS_URL = `wss://www.davidjny.com/ws/${endpoint}`;
+  // const WS_URL = `${protocol}://www.davidjny.com/ws/${endpoint}`;
 
   const { lastJsonMessage } = useWebSocket(WS_URL, {
-    shouldReconnect: () => true,  // Automatically reconnect on disconnect
-    reconnectAttempts: 10,        // Retry up to 10 times
-    reconnectInterval: 3000,      // Reconnect every 3 seconds
-    onOpen: () => console.log('WebSocket connected!'),   // Called when WebSocket opens
-    onClose: () => console.log('WebSocket connection closed'), // Called when WebSocket closes
-    onError: (error) => console.error('WebSocket error:', error), // Called when there’s an error
-    onmessage: (event) => {
-      try {
-        const data = JSON.parse(event.data);
-        console.log("Parsed WebSocket data:", data);
-        console.log("Raw WebSocket event string:", event.data);
-      } catch (err) {
-        console.error("Failed to parse WebSocket data:", event.data, err);
+    shouldReconnect: () => true,
+    reconnectAttempts: 10,
+    reconnectInterval: 3000,
+    onOpen: () => console.log('WebSocket connected!'),
+    onClose: () => console.log('WebSocket connection closed'),
+    onError: (error) => console.error('WebSocket error:', error),
+    pingInterval: 30000,
+  });
+
+  useEffect(() => {
+    if (!lastJsonMessage) return;
+
+    // Handle JSON messages
+    if (typeof lastJsonMessage === "object" && lastJsonMessage.data) {
+      const newData = lastJsonMessage.data;
+
+      if (Array.isArray(newData)) {
+        setColumns(
+          Object.keys(newData[0] || {}).filter(
+            (col) => col !== "timestamp" && col !== "time_of_trigger"
+          )
+        );
+
+        setFlashingRow(true);
+        setTimeout(() => setFlashingRow(false), 500);
+
+        setUpdates((prevUpdates) => {
+          const combined = [...newData, ...prevUpdates];
+          const unique = Array.from(
+            new Map(
+              combined.map((item) => [`${item.symbol}-${item.timestamp}`, item])
+            ).values()
+          );
+          return unique.slice(0, 1000);
+        });
+      } else {
+        console.error("Expected an array in lastJsonMessage.data, got:", newData);
       }
-    },  // Called when a message is received
-    pingInterval: 30000,          // Send a ping every 30 seconds
-    });
-    
-    // Handle incoming WebSocket messages
-    useEffect(() => {
-      if (lastJsonMessage?.data) {
-        const newData = lastJsonMessage.data;
-    
-        if (Array.isArray(newData)) {
-          setColumns(Object.keys(newData[0] || {}).filter(col => col !== "timestamp" && col !== "time_of_trigger"));
-    
-          // Identify symbols in this update to flash
-          const newSymbols = new Set(newData.map(item => item.symbol));
-          setFlashingRows(newSymbols);
-    
-          // Remove flash state after 500ms
-          setTimeout(() => setFlashingRows(new Set()), 500);
-    
-          setUpdates((prevUpdates) => {
-            const combined = [...newData, ...prevUpdates];
-    
-            // Remove duplicates by symbol (or symbol+timestamp if needed)
-            const unique = Array.from(
-              new Map(combined.map(item => [`${item.symbol}-${item.timestamp}`, item])).values()
-            );
-    
-            return unique.slice(0, 1000); // Keep most recent # unique entries
-          });
-        } else {
-          console.error("Received data is not an array:", newData);
-        }
-      }
-    }, [lastJsonMessage]);
+    }
+  }, [lastJsonMessage]);
 
   const formatTime = (timestamp) => {
     return new Date(timestamp).toLocaleTimeString("en-US", { hour12: false });
@@ -77,9 +69,9 @@ const WebSocketComponent = ({ endpoint, title }) => {
               ))}
             </tr>
           </thead>
-          <tbody>
+          <tbody className={flashingRow ? "table-flash" : ""}>
             {updates.map((item, index) => (
-              <tr key={index} className={flashingRows.has(item.symbol) ? "table-flash" : ""}>
+              <tr key={index} >
                 {columns.map((col) => (
                   <td key={col} className="">
                     {col.includes("timestamp") ? formatTime(item[col]) : item[col]}
