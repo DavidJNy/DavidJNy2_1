@@ -45,7 +45,7 @@ pm2 restart davidportserver
 
 # Check if pm2 restart all was successful
 if [ $? -ne 0 ]; then
-    echo "pm2 restart all failed, exiting."
+    echo "pm2 restart davidportserver failed, exiting."
     exit 1
 fi
 
