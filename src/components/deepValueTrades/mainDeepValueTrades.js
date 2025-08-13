@@ -8,8 +8,8 @@ const WebSocketComponent = ({ endpoint, title }) => {
 
   const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 
-  const WS_URL = `wss://www.davidjny.com/ws/${endpoint}`;
-  // const WS_URL = `${protocol}://www.davidjny.com/ws/${endpoint}`;
+  // const WS_URL = `wss://www.davidjny.com/ws/${endpoint}`;
+  const WS_URL = `${protocol}://www.davidjny.com/ws/${endpoint}`;
 
   const { lastJsonMessage } = useWebSocket(WS_URL, {
     shouldReconnect: () => true,
@@ -29,12 +29,20 @@ const WebSocketComponent = ({ endpoint, title }) => {
       const newData = lastJsonMessage.data;
 
       if (Array.isArray(newData)) {
-        setColumns(
-          Object.keys(newData[0] || {}).filter(
+        if (newData.length > 0) {
+          const keys = Object.keys(newData[0]);
+          const filteredKeys = keys.filter(
             (col) => col !== "timestamp" && col !== "time_of_trigger"
-          )
-        );
+          );
 
+          // Sort to ensure 'symbol' is first, and the rest are alphabetical
+          filteredKeys.sort((a, b) => {
+            if (a === "symbol") return -1;
+            if (b === "symbol") return 1;
+            return a.localeCompare(b);
+          });
+          setColumns(filteredKeys);
+        }
         setFlashingRow(true);
         setTimeout(() => setFlashingRow(false), 500);
 
