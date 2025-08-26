@@ -34,3 +34,5 @@ database.sqlite
 .env
 .env.development
 .env.production
+
+pm2website.json
