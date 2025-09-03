@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 
-const WebSocketComponent = ({ endpoint, title }) => {
+const WebSocketComponent = ({ endpoint, title, voiceEnabled }) => {
   const [updates, setUpdates] = useState([]);
   const [columns, setColumns] = useState([]);
   const [flashingRow, setFlashingRow] = useState(new Set());
@@ -58,8 +58,17 @@ const WebSocketComponent = ({ endpoint, title }) => {
       } else {
         console.error("Expected an array in lastJsonMessage.data, got:", newData);
       }
+      if (title === "Percent Increases Scanner" && voiceEnabled) {
+        const ticker = newData[0].symbol;
+        const spelled = ticker.split("").join(" ");
+        const msg = new SpeechSynthesisUtterance(spelled);
+        msg.rate = 1.6;
+        msg.volume = 0.9;
+        msg.pitch = 1;
+        window.speechSynthesis.speak(msg);
+      }
     }
-  }, [lastJsonMessage]);
+  }, [lastJsonMessage, title, voiceEnabled]);
 
   const formatTime = (timestamp) => {
     return new Date(timestamp).toLocaleTimeString("en-US", { hour12: false });
@@ -111,6 +120,8 @@ function MainDeepValueTrades() {
   const [visibleScanners, setVisibleScanners] = useState(
     scanners.reduce((acc, { endpoint }) => ({ ...acc, [endpoint]: true }), {})
   );
+  
+  const [voiceEnabled, setVoiceEnabled] = useState(true); // toggle for speech
 
   const toggleVisibility = (endpoint) => {
     setVisibleScanners((prev) => ({ ...prev, [endpoint]: !prev[endpoint] }));
@@ -132,13 +143,26 @@ function MainDeepValueTrades() {
               </label>
             ))}
           </div>
-        <div className="row">
-          {scanners.map(({ endpoint, title }) =>
-            visibleScanners[endpoint] ? (
-              <WebSocketComponent key={endpoint} endpoint={endpoint} title={title} />
-            ) : null
-          )}
-        </div>
+          <label className="mx-3">
+            <input
+              type="checkbox"
+              checked={voiceEnabled}
+              onChange={() => setVoiceEnabled(!voiceEnabled)}
+            />{" "}
+            Voice Alerts
+          </label>
+          <div className="row">
+            {scanners.map(({ endpoint, title }) =>
+              visibleScanners[endpoint] ? (
+                <WebSocketComponent
+                  key={endpoint}
+                  endpoint={endpoint}
+                  title={title}
+                  voiceEnabled={voiceEnabled}   // 👈 pass it here
+                />
+              ) : null
+            )}
+          </div>
       </div>
     </div>
   );
