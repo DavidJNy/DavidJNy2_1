@@ -35,7 +35,10 @@ $enable-negative-margins: true;
     }
 }
 
+#root {
+    background-color: $gray-800;
 
+}
 
 #App {
     background-color: $gray-800;
@@ -269,6 +272,16 @@ nav {
     background-color: #343a40;
 }
 
+.websocket-background {
+    background-color: $gray-900;
+    /* or just dark gray if you don't use SCSS variables */
+    width: 100%;
+    min-height: 100vh;
+    /* make sure it covers the full height */
+    padding: 1em;
+    /* optional padding */
+    color: $white;
+}
 .dropdown-menu {
   background-color: $gray-900; // match your dark container
   border: 1px solid $gray-700;
