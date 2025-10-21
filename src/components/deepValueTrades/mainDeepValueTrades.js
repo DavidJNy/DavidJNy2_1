@@ -20,11 +20,24 @@ function MainDeepValueTrades() {
     { endpoint: "stock_halts", title: "Stock Halts" },
   ];
 
+  // 🟢 Load saved settings from localStorage
   const [settings, setSettings] = useState(() => loadSettings());
 
+  // 🟢 Load saved volume, fallback to 1 if not saved
+  const [volume, setVolume] = useState(() => {
+    const saved = localStorage.getItem("deepValueVolume");
+    return saved ? parseFloat(saved) : 1;
+  });
+
+  // 🟡 Save settings when they change
   useEffect(() => {
     saveSettings(settings);
   }, [settings]);
+
+  // 🟢 Save volume when it changes
+  useEffect(() => {
+    localStorage.setItem("deepValueVolume", volume.toString());
+  }, [volume]);
 
   const toggleVisibility = (endpoint) => {
     const scannerSettings = settings.scanners?.[endpoint] || {
@@ -56,7 +69,6 @@ function MainDeepValueTrades() {
       <div className="header">
         <div className="text-center pt-3 fs-1">Deep Value Trades</div>
 
-        {/* Scanner visibility toggles */}
         <div className="options d-flex flex-wrap justify-content-center py-2">
           {scanners.map(({ endpoint, title }) => (
             <label key={endpoint} className="mx-3">
@@ -70,8 +82,21 @@ function MainDeepValueTrades() {
           ))}
         </div>
 
-        {/* Reset button */}
         <div className="text-center my-3">
+          <div className="d-flex align-items-center gap-2 mt-2">
+            <label htmlFor="volumeControl" className="text-white mb-0">🔊 Volume</label>
+            <input
+              id="volumeControl"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={(e) => setVolume(parseFloat(e.target.value))}
+              className="form-range tts-volume-slider"
+            />
+            <span className="text-white">{Math.round(volume * 100)}%</span>
+          </div>
           <button
             className="btn btn-outline-light mx-2"
             onClick={() => {
@@ -96,6 +121,7 @@ function MainDeepValueTrades() {
                 key={endpoint}
                 endpoint={endpoint}
                 title={title}
+                volume={volume}
                 settings={settings}
                 setSettings={setSettings}
               />

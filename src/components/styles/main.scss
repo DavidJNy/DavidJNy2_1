@@ -403,6 +403,18 @@ nav {
   color: #000 !important;
 }
 
+.tts-volume-slider {
+  width: 150px;
+  accent-color: $warning; // matches your Bootstrap theme (yellowish)
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    accent-color: $danger; // turn red when hovering
+    transform: scale(1.05);
+  }
+}
+
 @keyframes flashRow {
     0% {
         background-color: #ffc107;

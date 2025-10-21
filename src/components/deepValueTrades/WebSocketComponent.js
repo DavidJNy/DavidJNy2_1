@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import useWebSocket from "react-use-websocket";
 
-export const WebSocketComponent = ({ endpoint, title, settings, setSettings }) => {
+export const WebSocketComponent = ({ endpoint, title, settings, setSettings, volume }) => {
   const [updates, setUpdates] = useState([]);
   const [columns, setColumns] = useState([]);
   const [flashingRow, setFlashingRow] = useState(false);
@@ -53,29 +53,31 @@ export const WebSocketComponent = ({ endpoint, title, settings, setSettings }) =
     pingInterval: 30000,
   });
 
+  // Refs
+  const lastSpokenRef = useRef(null);  // stores last spoken symbol
+  const hasMountedRef = useRef(false); // skip first effect run
+  const volumeRef = useRef(volume);    // store latest volume
+
+  // Keep volumeRef updated whenever volume changes
+  volumeRef.current = volume;
+
   useEffect(() => {
     if (!lastJsonMessage?.data || !Array.isArray(lastJsonMessage.data)) return;
 
-    // Keep timestamp for deduplication but remove from UI columns
     const filteredData = lastJsonMessage.data.map(item => {
       const newItem = { ...item };
-      delete newItem.time_of_trigger; // only drop this
+      delete newItem.time_of_trigger;
       return newItem;
     });
 
     if (filteredData.length > 0) {
-      const keys = Object.keys(filteredData[0]).filter(k => k !== "timestamp"); // hide timestamp
+      const keys = Object.keys(filteredData[0]).filter(k => k !== "timestamp");
       const sortedKeys = columnOrderRef.current
         .filter(k => keys.includes(k))
         .concat(keys.filter(k => !columnOrderRef.current.includes(k)));
       setColumns(sortedKeys);
     }
 
-    // Flash animation
-    setFlashingRow(true);
-    setTimeout(() => setFlashingRow(false), 500);
-
-    // Keep timestamp internally for dedupe
     setUpdates(prev => {
       const combined = [...filteredData, ...prev];
       const unique = Array.from(
@@ -84,17 +86,31 @@ export const WebSocketComponent = ({ endpoint, title, settings, setSettings }) =
       return unique.slice(0, 1000);
     });
 
-    // Voice alert (only first symbol in this batch)
-    if (voiceEnabled && filteredData[0]?.symbol) {
-      const msg = new SpeechSynthesisUtterance(filteredData[0].symbol.split("").join(" "));
-      msg.rate = 1.3;
-      msg.volume = 0.9;
-      msg.pitch = 1;
-      window.speechSynthesis.speak(msg);
+    // Only flash and speak after the initial load
+    if (hasMountedRef.current) {
+      setFlashingRow(true);
+      setTimeout(() => setFlashingRow(false), 500);
+
+      if (voiceEnabled && filteredData[0]?.symbol) {
+        const newSymbol = filteredData[0].symbol;
+
+        if (lastSpokenRef.current !== newSymbol) {
+          lastSpokenRef.current = newSymbol;
+
+          const msg = new SpeechSynthesisUtterance(newSymbol.split("").join(" "));
+          msg.rate = 1.3;
+          msg.volume = volumeRef.current;
+          msg.pitch = 1;
+          window.speechSynthesis.speak(msg);
+        }
+      }
+    } else {
+      // mark that initial load has finished
+      hasMountedRef.current = true;
     }
   }, [lastJsonMessage, voiceEnabled]);
 
-  const formatValue = (col, value) => {
+    const formatValue = (col, value) => {
     if (value == null) return "";
 
     // Columns that should be comma-formatted
